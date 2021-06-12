@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CameraComponent } from './camera/camera.component';
 import { LoginComponent } from './login/login.component';
 
 // Firebase
@@ -16,18 +17,23 @@ import { firebaseConfig } from '../secret';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+// QR Code
+import { QRCodeModule } from 'angularx-qrcode'
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    CameraComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    QRCodeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
