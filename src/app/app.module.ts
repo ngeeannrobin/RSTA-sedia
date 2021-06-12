@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 
 // Firebase
-import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 
 import { firebaseConfig } from '../secret';
@@ -29,6 +30,7 @@ import { ScannerComponent } from './scanner/scanner.component';
     ScannerComponent
   ],
   imports: [
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AppRoutingModule,
