@@ -1,0 +1,52 @@
+.profile-img {
+    width: 30%;
+    display: block;
+    margin: 1% auto;
+    margin-top: 20vh;
+    border-radius: 50%;
+}
+
+.user-info *, .book-info * {
+    font-family: "PT Sans", "Arial", sans-serif;
+    text-align: center;
+}
+
+.user-info .name {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: var(--main-text-color);
+}
+
+.user-info .rank {
+    color: var(--sub-text-color);
+}
+
+.user-info, .book-info {
+    margin-top: 5vh;
+}
+
+.btn-container {
+    background-color: var(--body-background-color);
+    width: 100%;
+    text-decoration: underline;
+    text-align: center;
+   
+    font-size: .8em;
+    padding: 15% 0;
+}
+
+.logout {
+    color: #E33232;
+}
+
+.btn {
+    margin-top: 2.5vh;
+}
+
+.fs {
+    position:absolute;
+    top:0%; left:0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}

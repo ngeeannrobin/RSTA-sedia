@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="rank-container">
+        <a class="label">Rank</a>
+        <div class="rank-btn-container">
+            <a *ngFor="let rank of ranks" class="rank-btn" [ngClass]="{'selected':rank==selectedRank}" (click)="selectedRank=rank">{{rank}} </a>
+        </div>
+    </div>
+    <div>
+        <a class="label">Name</a> <input [(ngModel)]="name" class="name">
+    </div>
+    <div class="btn-container">
+        <a class="btn cancel" (click)="cancel()">Cancel</a>
+        <a class="btn confirm" (click)="confirm()">Confirm</a>
+    </div>
+</div>

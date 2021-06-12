@@ -40,6 +40,10 @@ export class AuthService {
     return promise;
   }
 
+  GetCurrentUser() {
+    return firebase.auth().currentUser;
+  }
+
   AuthLogin(provider){
     return this.auth.signInWithPopup(provider)
     .then((result) => {

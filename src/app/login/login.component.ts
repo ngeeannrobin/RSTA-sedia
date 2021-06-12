@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     // this.redirec = true;
     // this.displayProgressSpinner = false;
     await this.Delay(300);
-    this.router.navigate(["/bibo"]);
+    this.router.navigate(["/main"]);
   }
 
   async Delay(ms){

@@ -4,13 +4,17 @@ import { NgModule } from '@angular/core';
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BiboComponent } from './bibo/bibo.component';
+import { ChangeRankNameComponent } from './change-rank-name/change-rank-name.component';
 import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './menu/menu.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ScannerComponent } from './scanner/scanner.component';
 
 // Firebase
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
-
 import { firebaseConfig } from '../secret';
 
 // PWA
@@ -20,8 +24,13 @@ import { environment } from '../environments/environment';
 // QR Code
 import { QRCodeModule } from 'angularx-qrcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
-import { ScannerComponent } from './scanner/scanner.component';
-import { BiboComponent } from './bibo/bibo.component';
+
+// Misc
+import { FormsModule } from '@angular/forms';
+
+
+
+
 
 
 @NgModule({
@@ -29,7 +38,10 @@ import { BiboComponent } from './bibo/bibo.component';
     AppComponent,
     LoginComponent,
     ScannerComponent,
-    BiboComponent
+    BiboComponent,
+    MenuComponent,
+    ProfileComponent,
+    ChangeRankNameComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -37,6 +49,7 @@ import { BiboComponent } from './bibo/bibo.component';
     AngularFirestoreModule,
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
     QRCodeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ZXingScannerModule
