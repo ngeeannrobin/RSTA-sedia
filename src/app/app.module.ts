@@ -21,13 +21,15 @@ import { environment } from '../environments/environment';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScannerComponent } from './scanner/scanner.component';
+import { BiboComponent } from './bibo/bibo.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ScannerComponent
+    ScannerComponent,
+    BiboComponent
   ],
   imports: [
     AngularFireAuthModule,

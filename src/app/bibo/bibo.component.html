@@ -1,0 +1,8 @@
+<div (click)="bookIn()">
+    Book In
+</div>
+<div (click)="bookOut()">
+    Book Out
+</div>
+
+<scanner *ngIf="scan" (qrstring)="qrstring($event)"></scanner>

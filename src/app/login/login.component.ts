@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   }
 
   async signInWithGoogle(){
-    // this.auth.GoogleAuth();
     this.auth.CheckLogin().then(loggedIn=>{
       if (!loggedIn){
         this.message = "Google Pop-up opened."
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
     // this.redirec = true;
     // this.displayProgressSpinner = false;
     await this.Delay(300);
-    this.router.navigate(["/MainMenu"]);
+    this.router.navigate(["/bibo"]);
   }
 
   async Delay(ms){

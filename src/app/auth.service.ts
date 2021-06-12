@@ -1,20 +1,32 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private auth: AngularFireAuth) { }
-
-  CheckLogin(): Promise<boolean> {
+  public uid;
+  constructor(private auth: AngularFireAuth, private router: Router) { }
+  
+  CheckLogin(redirect=false): Promise<boolean> {
     let promise: Promise<boolean> = new Promise<boolean>((res)=>{
       this.auth.currentUser.then(user=>{
         res(user!=null);
       })
-    })
+    });
+    if (redirect){
+      promise.then(loggedIn=>{
+        if (!loggedIn) {
+          this.router.navigate(["/login"]);
+        } else {
+          this.GetUserId().then(uid=>{
+            this.uid = uid;
+          })
+        }
+      })
+    }
     return promise;
   }
 

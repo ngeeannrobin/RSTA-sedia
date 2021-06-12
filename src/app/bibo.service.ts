@@ -7,4 +7,8 @@ import { FirestoreService } from './firestore.service';
 export class BiboService {
 
   constructor(public fs: FirestoreService) { }
+
+  Book(uuid,bookIn,qr) {
+    return this.fs.SetBiboRequest(uuid,bookIn,qr);
+  }
 }

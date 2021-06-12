@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BiboComponent } from './bibo/bibo.component';
 import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
+  {path: "bibo", component: BiboComponent},
   {path: "", pathMatch: "full", redirectTo: "login"}
 ];
 

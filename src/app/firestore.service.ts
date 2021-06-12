@@ -39,6 +39,16 @@ export class FirestoreService {
     })
   }
 
-  
+  SetBiboRequest(uuid,bookIn,qr){
+    const doc = this.db.doc(`req/${uuid}`);
+    const obj = {
+      in: bookIn,
+      qr: qr
+    }
+    console.log(doc.ref)
+    return doc.set(obj);
+  }
+
+
 
 }

@@ -7,14 +7,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ScannerComponent implements OnInit {
 
-  @Output() emitter: EventEmitter<string> = new EventEmitter();
+  @Output() qrstring: EventEmitter<string> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
 
   public scanSuccessHandler($event: any) {
-    this.emitter.emit($event);
+    this.qrstring.emit($event);
   }
 
 
