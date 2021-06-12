@@ -1,0 +1,32 @@
+.book-btn-container {
+    position: absolute;
+    left: 50%; top: 80%;
+    transform: translate(-50%,-50%);
+}
+
+.book-btn {
+    background-color: lightgreen;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.img-container{
+    position: absolute;
+    left: 50%; top: 30%;
+    max-height: 40vh;
+    transform: translate(-50%,-50%)
+}
+
+.eleven {
+
+}
+
+.txt {
+    text-align: center;
+    width: 85vw;
+    position: absolute;
+    bottom: -25%; left: 50%;
+    transform:translate(-50%,-50%);
+}

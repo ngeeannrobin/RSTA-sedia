@@ -8,13 +8,14 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  message: string = "_";
+  message: string = "I swear this UI is temporary.";
   constructor(
     private router: Router,
     private auth: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.auth.CheckLogin(true);
   }
 
   async signInWithGoogle(){
@@ -22,26 +23,12 @@ export class LoginComponent implements OnInit {
       if (!loggedIn){
         this.message = "Google Pop-up opened."
         this.auth.GoogleAuth().then(_ => {
-          console.log(_);
+          this.redirect();
         })
       } else {
         this.redirect();
       }
     }) 
-  }
-
-  async Checker(){
-    let checking = true;
-    while (checking){
-      await this.Delay(1000);
-      this.auth.CheckLogin().then(loggedIn=>{
-        if (loggedIn){
-          checking=false;
-          this.redirect();
-          
-        }
-      })
-    }
   }
 
   async redirect(){

@@ -1,8 +1,16 @@
-<div (click)="bookIn()">
-    Book In
+<div class="img-container">
+    <img src="../../assets/11.png" class="eleven">
+    <span class="txt">Hello, 3SG ROBIN YONG WEI QIANG</span>
 </div>
-<div (click)="bookOut()">
-    Book Out
+
+<div class="book-btn-container">
+    <div (click)="bookIn()" class="book-btn">
+        Book In
+    </div>
+    <div (click)="bookOut()" class="book-btn">
+        Book Out
+    </div>
 </div>
+
 
 <scanner *ngIf="scan" (qrstring)="qrstring($event)"></scanner>
