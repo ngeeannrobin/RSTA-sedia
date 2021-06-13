@@ -45,12 +45,7 @@ export class AuthService {
   }
 
   AuthLogin(provider){
-    return this.auth.signInWithPopup(provider)
-    .then((result) => {
-        console.log('log in success')
-    }).catch((error) => {
-        console.log(error)
-    })
+    return this.auth.signInWithPopup(provider);
   }
 
   GoogleAuth() {
