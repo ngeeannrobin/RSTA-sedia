@@ -9,35 +9,37 @@ import * as firebase from 'firebase/app';
 export class AuthService {
   public uid;
   constructor(private auth: AngularFireAuth, private router: Router) { }
+
+
+  Init(redirect=false): Promise<void> {
+    const loginPromise = this.CheckLogin();
+    const uidPromise = this.GetUserId();
+
+    return new Promise((res,rej):void=>{
+      Promise.all([loginPromise,uidPromise]).then(values=>{
+        if (!values[0] && redirect){
+          this.router.navigate(["/login"]);
+        }
+        this.uid = values[1];
+        res();
+      })
+    });
+  }
   
-  CheckLogin(redirect=false): Promise<boolean> {
-    let promise: Promise<boolean> = new Promise<boolean>((res)=>{
+  CheckLogin(): Promise<boolean> {
+    return new Promise<boolean>((res)=>{
       this.auth.currentUser.then(user=>{
         res(user!=null);
       })
     });
-    if (redirect){
-      promise.then(loggedIn=>{
-        if (!loggedIn) {
-          this.router.navigate(["/login"]);
-        } else {
-          this.GetUserId().then(uid=>{
-            this.uid = uid;
-          })
-        }
-      })
-    }
-    return promise;
   }
 
   GetUserId(): Promise<string> {
-
-    let promise: Promise<string> = new Promise<string>((res)=>{
+    return new Promise<string>((res)=>{
       this.auth.currentUser.then(user=>{
         res(user?.uid);
       })
-    })
-    return promise;
+    });
   }
 
   GetCurrentUser() {

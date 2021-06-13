@@ -14,13 +14,8 @@ export class ProfileComponent implements OnInit {
   userData: any = {};
   changeRankName: boolean = false;
   ngOnInit(): void {
-    this.auth.CheckLogin(true).then(loggedIn=>{
-      if (loggedIn){
+    this.auth.Init(true).then(_=>{
         this.GetProfile(this.auth.uid);
-        
-
-      }
-      
     })
   }
 

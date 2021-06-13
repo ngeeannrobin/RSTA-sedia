@@ -14,7 +14,7 @@ export class BiboComponent implements OnInit {
   constructor(private auth: AuthService, private bibo: BiboService, private router: Router) { }
 
   ngOnInit(): void {
-    this.auth.CheckLogin(true);
+    this.auth.Init(true);
   }
 
   bookIn() {
