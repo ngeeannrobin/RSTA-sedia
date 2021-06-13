@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { runInThisContext } from 'vm';
 import { AuthService } from '../auth.service';
 
 @Component({
