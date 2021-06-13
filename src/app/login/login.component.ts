@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { runInThisContext } from 'vm';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -15,15 +16,15 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.auth.CheckLogin(true);
+    this.Checker();
   }
 
   async signInWithGoogle(){
     this.auth.CheckLogin().then(loggedIn=>{
       if (!loggedIn){
         this.message = "Google Pop-up opened."
-        this.auth.GoogleAuth().then(_ => {
-          this.redirect();
+        this.auth.GoogleAuth().catch(err=>{
+          this.message = err.message;
         })
       } else {
         this.redirect();
@@ -31,11 +32,22 @@ export class LoginComponent implements OnInit {
     }) 
   }
 
+
+  async Checker(){
+    let checking = true;
+    while (checking){
+      this.auth.CheckLogin().then(loggedIn=>{
+        if (loggedIn){
+          checking=false;
+          this.redirect();
+        }
+      })
+      await this.Delay(100);
+    }
+  }
+
   async redirect(){
     this.message = "Redirecting...";
-    // this.redirec = true;
-    // this.displayProgressSpinner = false;
-    await this.Delay(300);
     this.router.navigate(["/main"]);
   }
 
