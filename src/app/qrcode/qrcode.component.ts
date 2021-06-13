@@ -11,7 +11,7 @@ export class QrcodeComponent implements OnInit {
   
   constructor(private auth: AuthService, private admin: AdminService) { }
   code:string = "";
-  changeFrequency:number = 60;
+  changeFrequency:number = 180;
   countDown:number = this.changeFrequency;
   changing:boolean = false;
   ngOnInit(): void {
@@ -38,13 +38,10 @@ export class QrcodeComponent implements OnInit {
       if (this.countDown>0){
         this.countDown -= 1;
       } else if (!this.changing) {
-        console.log()
-        this.ChangeQR()
+        this.ChangeQR();
         this.changing = true;
       }
-
     }
-
   }
 
   async Delay(ms){
