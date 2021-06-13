@@ -1,0 +1,5 @@
+<div class="qr-container">
+    <div class="title">Scan to Book in/Book out</div>
+    <qrcode *ngIf="code!=''" [qrdata]="code" [width]="512" [errorCorrectionLevel]="'M'" [elementType]="'img'"></qrcode>
+    <div class="countdown" (click)="ChangeQR()">Code valid for {{countDown}}s</div>
+</div>

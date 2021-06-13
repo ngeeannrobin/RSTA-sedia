@@ -76,6 +76,15 @@ export class FirestoreService {
     return this.GetRequestByRef(ref);
   }
 
+  GetQR(){
+    return this.GetRequest(this.db.doc("data/_"));
+  }
+
+  UpdateQR(txt: string){
+    const doc = this.db.doc("data/_");
+    const obj = {qr: txt};
+    return doc.set(obj);
+  }
 
 
 }

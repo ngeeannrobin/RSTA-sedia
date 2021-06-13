@@ -2,4 +2,5 @@
     <div class="btn" (click)="redirect('/bibo')">BIBO</div>
     <div class="btn" (click)="redirect('/profile')">Profile</div>
     <div class="btn" (click)="redirect('/view-bibo')" *ngIf="isAdmin">View BIBO Records</div>
+    <div class="btn" (click)="redirect('/qr')" *ngIf="isAdmin">Show QR Code</div>
 </div>

@@ -28,6 +28,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 // Misc
 import { FormsModule } from '@angular/forms';
 import { ViewBiboComponent } from './view-bibo/view-bibo.component';
+import { QrcodeComponent } from './qrcode/qrcode.component';
 
 
 
@@ -43,7 +44,8 @@ import { ViewBiboComponent } from './view-bibo/view-bibo.component';
     MenuComponent,
     ProfileComponent,
     ChangeRankNameComponent,
-    ViewBiboComponent
+    ViewBiboComponent,
+    QrcodeComponent
   ],
   imports: [
     AngularFireAuthModule,
