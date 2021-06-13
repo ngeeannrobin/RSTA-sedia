@@ -62,6 +62,20 @@ export class FirestoreService {
     return doc.set(obj,{merge:true});
   }
 
+  IsAdmin(uuid):Promise<boolean>{
+   const prom = this.GetRequest(this.db.doc(`user-private/${uuid}`));
+   return new Promise((res,rej)=>{
+     prom.then(data=>{
+      res(data?.admin);
+     }).catch(err=>{rej(err)})
+   })
+  }
+
+  GetBiboRecord(dateId:string):Promise<any>{
+    const ref = this.db.collection(`rec/${dateId}/rec`).ref.orderBy("time","desc");
+    return this.GetRequestByRef(ref);
+  }
+
 
 
 }

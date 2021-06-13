@@ -27,6 +27,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 // Misc
 import { FormsModule } from '@angular/forms';
+import { ViewBiboComponent } from './view-bibo/view-bibo.component';
 
 
 
@@ -41,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     BiboComponent,
     MenuComponent,
     ProfileComponent,
-    ChangeRankNameComponent
+    ChangeRankNameComponent,
+    ViewBiboComponent
   ],
   imports: [
     AngularFireAuthModule,
