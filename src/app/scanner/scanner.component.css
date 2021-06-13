@@ -1,8 +1,14 @@
 :host zxing-scanner::ng-deep video {
-    max-height: 50vh;    
-    object-fit: contain;
+    height: min(90vw,90vh);
+    width: min(90vw,90vh);  
+    /* object-fit: contain; */
 }
 :host zxing-scanner::ng-deep {
+    height: min(90vw,90vh);
+    width: min(90vw,90vh);
     border-style: solid;
     border-color: black;
+    position: absolute;
+    left: 50%; top: 10%;
+    transform: translate(-50%);
 } 
