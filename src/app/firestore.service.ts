@@ -39,16 +39,6 @@ export class FirestoreService {
     })
   }
 
-  SetBiboRequest(uuid,bookIn,qr){
-    const doc = this.db.doc(`req/${uuid}`);
-    const obj = {
-      in: bookIn,
-      qr: qr
-    }
-    console.log(doc.ref)
-    return doc.set(obj);
-  }
-
   GetUser(uuid) {
     return this.GetRequest(this.db.doc(`user/${uuid}`));
   }
@@ -76,13 +66,13 @@ export class FirestoreService {
     return this.GetRequestByRef(ref);
   }
 
-  GetQR(){
+  GetCode(){
     return this.GetRequest(this.db.doc("data/_"));
   }
 
-  UpdateQR(txt: string){
+  UpdateCode(txt: string){
     const doc = this.db.doc("data/_");
-    const obj = {qr: txt};
+    const obj = {code: txt};
     return doc.set(obj);
   }
 

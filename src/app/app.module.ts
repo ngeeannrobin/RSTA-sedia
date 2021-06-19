@@ -29,8 +29,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { FormsModule } from '@angular/forms';
 import { ViewBiboComponent } from './view-bibo/view-bibo.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -54,6 +53,7 @@ import { QrcodeComponent } from './qrcode/qrcode.component';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     QRCodeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ZXingScannerModule

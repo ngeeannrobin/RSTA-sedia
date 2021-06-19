@@ -32,7 +32,10 @@ export class BiboComponent implements OnInit {
 
   qrstring($event: any){
     this.scan = false;
-    this.bibo.Book(this.auth.uid,this.bookingIn,$event)
+    const of = this.bibo.Book(this.bookingIn,$event);
+    of.then(_=>{
+      console.log(_);
+    });
   }
 
 }

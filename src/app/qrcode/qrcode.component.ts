@@ -16,19 +16,18 @@ export class QrcodeComponent implements OnInit {
   changing:boolean = false;
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
-      this.admin.GetQR().then(code=>{
+      this.admin.GetCode().then(code=>{
         this.code = code;
         this.CountDown();
       })
     })
   }
 
-  ChangeQR(){
-    this.admin.ChangeQR().then(txt=>{
+  ChangeCode(){
+    this.admin.ChangeCode().then(txt=>{
       this.code = txt;
       this.countDown = this.changeFrequency;
       this.changing = false;
-      console.log(this.code);
     })
   }
 
@@ -38,7 +37,7 @@ export class QrcodeComponent implements OnInit {
       if (this.countDown>0){
         this.countDown -= 1;
       } else if (!this.changing) {
-        this.ChangeQR();
+        this.ChangeCode();
         this.changing = true;
       }
     }

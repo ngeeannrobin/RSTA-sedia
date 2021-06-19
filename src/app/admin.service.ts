@@ -13,10 +13,10 @@ export class AdminService {
     return this.fs.IsAdmin(uuid);
   }
 
-  GetQR():Promise<string>{
+  GetCode():Promise<string>{
     return new Promise<string>((res,rej)=>{
-      this.fs.GetQR().then(data=>{
-        res(data.qr)
+      this.fs.GetCode().then(data=>{
+        res(data.code)
       }).then(err=>{
         rej(err)
       })
@@ -24,17 +24,17 @@ export class AdminService {
     
   }
 
-  ChangeQR(){
+  ChangeCode(){
     const length = 8;
     const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-    let result = "";
+    let newCode = "";
     for (let i=0; i<length; i++){
-      result += char[Math.floor(Math.random() * char.length)]
+      newCode += char[Math.floor(Math.random() * char.length)]
     }
 
     return new Promise<string>((res,rej)=>{
-      this.fs.UpdateQR(result).then(_=>{
-        res(result);
+      this.fs.UpdateCode(newCode).then(_=>{
+        res(newCode);
       }).catch(err=>{console.log(err)})
     })
 
