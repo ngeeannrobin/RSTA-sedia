@@ -11,6 +11,7 @@ import { BiboService } from '../bibo.service';
 export class BiboComponent implements OnInit {
   scan: Boolean = false;
   bookingIn: Boolean;
+  msg: String = "";
   constructor(private auth: AuthService, private bibo: BiboService, private router: Router) { }
 
   ngOnInit(): void {
@@ -32,9 +33,11 @@ export class BiboComponent implements OnInit {
 
   qrstring($event: any){
     this.scan = false;
-    const of = this.bibo.Book(this.bookingIn,$event);
-    of.then(_=>{
-      console.log(_);
+    this.msg = "Loading...";
+    this.bibo.Book(this.bookingIn,$event).then(data=>{
+      if (data.verified){
+        this.msg = `Successfully booked ${this.bookingIn?"in":"out"}.`;
+      }
     });
   }
 

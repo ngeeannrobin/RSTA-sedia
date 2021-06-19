@@ -10,12 +10,14 @@ export class BiboService {
 
   constructor(public fs: FirestoreService) { }
 
-  Book(bookIn,qr) {
+  Book(bookIn,qr):Promise<any> {
     const url = "https://us-central1-rsta-bibo.cloudfunctions.net/BookIn";
-    // return this.fs.SetBiboRequest(uuid,bookIn,qr);
-    // return this.http.get(url,{withCredentials: true,params:{code: qr}})
-    let f = functions().httpsCallable('BookIn');
-    return f({code: qr, bin: bookIn});
+    let HttpBookIn = functions().httpsCallable('BookIn');
+    return new Promise((res)=>{
+      HttpBookIn({code: qr, bin: bookIn}).then(data=>{
+        res(data.data);
+      })
+    })
   }
 
   ViewBiboRecord(dt):Promise<any>{
