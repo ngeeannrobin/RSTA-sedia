@@ -9,7 +9,7 @@
         <a class="label">Name</a> <input [(ngModel)]="name" class="name">
     </div>
     <div class="btn-container">
-        <a *ngIf="showCancel" class="btn cancel" (click)="cancel()">Cancel</a>
+        <a *ngIf="!firstTime" class="btn cancel" (click)="cancel()">Cancel</a>
         <a class="btn confirm" (click)="confirm()">Confirm</a>
     </div>
 </div>

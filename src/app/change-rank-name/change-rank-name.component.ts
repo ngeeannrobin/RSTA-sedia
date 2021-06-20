@@ -11,7 +11,7 @@ export class ChangeRankNameComponent implements OnInit {
   @Output() open: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private auth: AuthService, private prof: ProfileService) { }
-  @Input() showCancel:boolean = true;
+  @Input() firstTime:boolean = false;
   @Input() data:any;
   ranks = [
     "REC","PTE","PFC","LCP","CPL","CFC",

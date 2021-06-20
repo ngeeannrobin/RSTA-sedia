@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
       this.prof.GetProfile(this.auth.uid).then(data=>{
-        if (data.rank == null || data.name == null){
+        if (data == undefined){
           this.changeRankName = true;
         }
       })
