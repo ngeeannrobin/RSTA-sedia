@@ -9,6 +9,8 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   message: string = "I swear this UI is temporary.";
+  promptEmail: boolean = false;
+  signUp: boolean = false;
   constructor(
     private router: Router,
     private auth: AuthService
@@ -32,18 +34,40 @@ export class LoginComponent implements OnInit {
   }
 
   signUpWithEmail(){
-    // this.auth.EmailSignUp().catch(err=>{
-    //   this.message = err.message;
-    // })
-    this.message = "havent implement hehe";
+    this.signUp = true;
+    this.promptEmail = true;
   }
 
   signInWithEmail(){
-    this.message = "havent implement hehe";
-    // this.auth.EmailAuth().catch(err=>{
-    //   this.message = err.message;
-    // })
+    this.signUp = false;
+    this.promptEmail = true;
   }
+
+  EmailPassword($event){
+    this.promptEmail = false;
+    if ($event.checked){
+      if(this.signUp){
+        this.EmailSignUp($event.email,$event.password);
+      } else {
+        this.EmailSignIn($event.email,$event.password);
+      }
+      this.message = "Loading..."
+    }
+  }
+
+  EmailSignUp(email, password){
+    this.auth.EmailSignUp(email, password).catch(err=>{
+      this.message = err.message;
+    })
+  }
+
+  EmailSignIn(email, password){
+    this.auth.EmailSignIn(email, password).catch(err=>{
+      this.message = err.message;
+    })
+  }
+
+
 
 
   async Checker(){

@@ -14,3 +14,5 @@
 </div>
 
 <div class="msg">{{message}}</div>
+
+<login-email *ngIf="promptEmail" class="fs" (emitter)="EmailPassword($event)"></login-email>

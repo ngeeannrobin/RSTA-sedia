@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="inp-container">
+        <a class="label">Email</a> <input [(ngModel)]="this.cred.email" class="inp" type="email">
+        <div class="error">{{msg.email}}</div>
+    </div>
+    <div class="inp-container">
+        <a class="label">Password</a> <input [(ngModel)]="this.cred.password" class="inp" type="password">
+        <div class="error">{{msg.password}}</div>
+    </div>
+    <div class="btn-container">
+        <a class="btn cancel" (click)="cancel()">Cancel</a>
+        <a class="btn confirm" (click)="confirm()">Confirm</a>
+    </div>
+    
+</div>
