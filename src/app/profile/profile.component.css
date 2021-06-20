@@ -4,6 +4,7 @@
     margin: 1% auto;
     margin-top: 20vh;
     border-radius: 50%;
+    max-width: 128px;
 }
 
 .user-info *, .book-info * {
