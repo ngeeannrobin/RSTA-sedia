@@ -52,7 +52,15 @@ export class AuthService {
 
   GoogleAuth() {
     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
-  }  
+  }
+
+  EmailSignIn(email,password) {
+    return firebase.auth().signInWithCredential(firebase.auth.EmailAuthProvider.credential(email,password));
+  }
+
+  EmailSignUp(email,password) {
+    return firebase.auth().createUserWithEmailAndPassword(email,password);
+  }
 
 
   SignOut(): Promise<void> {

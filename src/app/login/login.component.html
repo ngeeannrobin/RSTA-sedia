@@ -1,7 +1,16 @@
 <div class="img-container">
     <img src="../../assets/11.png" class="eleven">
 </div>
-<div (click)="signInWithGoogle()" class="login">
-    Sign In (Google)
+<div class="login-container">
+    <div (click)="signInWithGoogle()" class="login-btn">
+        Log In (Google)
+    </div>
+    <div (click)="signInWithEmail()" class="login-btn">
+        Log In (Email)
+    </div>
+    <div (click)="signUpWithEmail()" class="login-btn">
+        Sign Up (Email)
+    </div>
 </div>
+
 <div class="msg">{{message}}</div>

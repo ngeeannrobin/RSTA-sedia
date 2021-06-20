@@ -1,14 +1,23 @@
-.login {
-    background-color: lightgreen;
-    transform: translate(-50%,-50%);
+.login-container {
+    
+    
     left: 50%;
-    top: 80%;
+    top: 75%;
+    transform: translate(-50%,-50%);
     position:absolute;
+
+    text-align: center;
+
+}
+
+.login-btn {
+    background-color: lightgreen;
+
     width: 50vw;
     height: 5vh;
-    text-align: center;
     line-height: 5vh;
     font-weight: bold;
+    margin-bottom: 0.5em;
 }
 
 .msg {

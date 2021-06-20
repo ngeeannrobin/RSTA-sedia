@@ -31,6 +31,20 @@ export class LoginComponent implements OnInit {
     }) 
   }
 
+  signUpWithEmail(){
+    // this.auth.EmailSignUp().catch(err=>{
+    //   this.message = err.message;
+    // })
+    this.message = "havent implement hehe";
+  }
+
+  signInWithEmail(){
+    this.message = "havent implement hehe";
+    // this.auth.EmailAuth().catch(err=>{
+    //   this.message = err.message;
+    // })
+  }
+
 
   async Checker(){
     let checking = true;
