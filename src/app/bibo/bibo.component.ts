@@ -37,6 +37,8 @@ export class BiboComponent implements OnInit {
     this.bibo.Book(this.bookingIn,$event).then(data=>{
       if (data.verified){
         this.msg = `Successfully booked ${this.bookingIn?"in":"out"}.`;
+      } else if (data.code == 1) {
+        this.msg = `Invalid code. Code may have expired.`
       }
     });
   }
