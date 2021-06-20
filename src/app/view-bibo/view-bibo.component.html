@@ -1,24 +1,34 @@
 <div class="container">
 
     <div class="title-container">
-        BIBO Records on {{ConvertDate(today)}}
+        BIBO Records on 
+        
+        <br>
+        <span *ngIf="!changingDate">{{ConvertDateToTitle(date)}}</span>
+        <input *ngIf="changingDate" class="date-input" type="date" [(ngModel)]="dateString" #dateinput>
+        <i class="fa ibtn" (click)="ToggleDate()" [ngClass]="{'fa-calendar-o':!changingDate,'fa-check':changingDate}"></i>
+    </div>
+    <div>
+        
     </div>
     <!-- <div class="phantom-container">
         BIBO Records on
     </div> -->
-    <div *ngFor="let rec of data" class="record-container">
-        <span class="index-container">
-            <span class="index">
-                {{data.indexOf(rec)+1}}.
+    <div *ngIf="!NoRecord()">
+        <div *ngFor="let rec of data" class="record-container">
+            <span class="index-container">
+                <span class="index">
+                    {{data.indexOf(rec)+1}}.
+                </span>
             </span>
-        </span>
-        <span>
-            <span class="time">{{ConvertHrs(rec.time)}} hrs </span>
-            <span class="in-out">(Book {{rec.in?"in":"out"}})</span>
-            <br>
-            <span class="rank">{{rec.rank}} </span>
-            <span class="name">{{rec.name}} </span>
-        </span>
+            <span>
+                <span class="time">{{ConvertDateToHours(rec.time)}}</span>
+                <span class="in-out">(Book {{rec.in?"in":"out"}})</span>
+                <br>
+                <span class="rank">{{rec.rank}} </span>
+                <span class="name">{{rec.name}} </span>
+            </span>
+        </div>
     </div>
     <div *ngIf="NoRecord()" class="nr-container">
         <span class="nr-txt">No records available.</span>
