@@ -50,3 +50,9 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.version {
+    position: absolute;
+    top: 0; right: 0;
+    padding: 1em;
+}
