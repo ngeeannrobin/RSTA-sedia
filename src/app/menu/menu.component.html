@@ -4,3 +4,5 @@
     <div class="btn" (click)="redirect('/view-bibo')" *ngIf="isAdmin">View BIBO Records</div>
     <div class="btn" (click)="redirect('/qr')" *ngIf="isAdmin">Show QR Code</div>
 </div>
+
+<change-rank-name *ngIf="changeRankName" class="fs" (open)="HandleChange($event)" [data]="{}" [showCancel]="true"></change-rank-name>

@@ -11,7 +11,7 @@ export class ChangeRankNameComponent implements OnInit {
   @Output() open: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private auth: AuthService, private prof: ProfileService) { }
-
+  @Input() showCancel:boolean;
   @Input() data:any;
   ranks = [
     "REC","PTE","PFC","LCP","CPL","CFC",
@@ -32,6 +32,7 @@ export class ChangeRankNameComponent implements OnInit {
   }
 
   confirm(){
+    if (this.selectedRank==undefined || this.name==undefined) {return;}
     this.prof.UpdateProfile(this.auth.uid,this.selectedRank,this.name).then(_=>{
       this.data.rank = this.selectedRank;
       this.data.name = this.name.toUpperCase();
