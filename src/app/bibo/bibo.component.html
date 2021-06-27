@@ -1,5 +1,5 @@
 
-<div class="book-btn-container" *ngIf="!scan">
+<div class="book-btn-container" *ngIf="!scan && !manual && !booked">
     <div (click)="BookIn()" class="book-btn">
         Book In
     </div>
@@ -9,8 +9,8 @@
 </div>
 
 
-<div class="book-btn-container" *ngIf="scan">
-    <div class="book-btn">
+<div class="book-btn-container" *ngIf="scan || manual">
+    <div (click)="Manual()" class="book-btn">
         Input code manually
     </div>
     <div (click)="Cancel()" class="book-btn">
@@ -25,15 +25,15 @@
 <scanner *ngIf="scan" (qrstring)="qrstring($event)"></scanner>
 
 <!-- manual input -->
+<bibo-input-code class="fs" *ngIf="manual" (codeEmitter)="code($event)"></bibo-input-code>
 
-
-<div class="dist-container" *ngIf="!scan">
+<div class="dist-container" *ngIf="!scan && !manual && !booked">
     Currently
     <div class="dist">
         {{distanceStr}}
     </div>
     away from RSTA office.
 </div>
-<div>
+<div class="msg-container">
     {{msg}}
 </div>

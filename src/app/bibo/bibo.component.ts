@@ -10,7 +10,9 @@ import { GpsService } from '../gps.service';
   styleUrls: ['./bibo.component.css']
 })
 export class BiboComponent implements OnInit {
+  booked: Boolean = false;
   scan: Boolean = false;
+  manual: Boolean = false;
   bookingIn: Boolean;
   msg: String = "";
   distance: number;
@@ -49,25 +51,44 @@ export class BiboComponent implements OnInit {
 
   BookIn() {
     this.bookingIn = true;
+    this.msg = "";
     this.Scan();
   }
   BookOut() {
     this.bookingIn = false
+    this.msg = "";
     this.Scan();
   }
 
-
+  Manual() {
+    this.scan = false;
+    this.manual = true;
+  }
   Scan(){
+    this.manual = false;
     this.scan = true;
   }
   Cancel() {
     this.scan = false;
   }
 
+  code($event: string){
+    this.manual = false
+    if ($event !== null){
+      this.msg = "Loading...";
+      this.Book(this.bookingIn,$event);
+    }
+  }
+
   qrstring($event: any){
     this.scan = false;
     this.msg = "Loading...";
-    this.bibo.Book(this.bookingIn,$event).then(data=>{
+    this.Book(this.bookingIn,$event);
+  }
+
+  Book(bookingIn:Boolean,code:string){
+    this.bibo.Book(bookingIn,code).then(data=>{
+      this.booked = data.verified;
       if (data.verified){
         this.msg = `Successfully booked ${this.bookingIn?"in":"out"}.`;
       } else if (data.code == 1) {
