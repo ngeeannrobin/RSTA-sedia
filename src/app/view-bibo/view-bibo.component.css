@@ -5,7 +5,8 @@
 .title-container {
     text-align: center;
     font-weight: bold;
-    background-color: lightyellow;
+    background-color: #49CD9B;
+    color: black;
     padding: 1em;    padding-left: 0;
     position: relative;
 }
@@ -40,10 +41,10 @@
 }
 
 .record-container:nth-child(odd){
-    background-color: lightgrey;
+    background-color: #4B4B4B;
 }
 .record-container:nth-child(even){
-    background-color: rgb(240,240,240);
+    background-color: #191919;
 }
 
 .index-container {

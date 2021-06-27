@@ -8,7 +8,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  message: string = "I swear this UI is temporary.";
+  message: string = "";
   promptEmail: boolean = false;
   signUp: boolean = false;
   constructor(

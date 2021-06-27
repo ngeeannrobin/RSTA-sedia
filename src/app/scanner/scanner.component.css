@@ -7,8 +7,14 @@
     height: min(90vw,90vh);
     width: min(90vw,90vh);
     border-style: solid;
-    border-color: black;
+    border-color: white;
     position: absolute;
     left: 50%; top: 10%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
 } 
+
+.loading {
+    position: absolute;
+    left: 50%; top: calc(10% + min(45vw, 45vh));
+    transform: translate(-50%,-50%);
+}

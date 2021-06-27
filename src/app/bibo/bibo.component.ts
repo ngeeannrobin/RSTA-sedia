@@ -18,6 +18,7 @@ export class BiboComponent implements OnInit {
   distance: number;
   distanceStr: string;
   checking: boolean = true;
+  loading: boolean = false;
   constructor(private auth: AuthService, private bibo: BiboService, private router: Router, private gps: GpsService) { }
 
   ngOnInit(): void {
@@ -87,6 +88,7 @@ export class BiboComponent implements OnInit {
   }
 
   Book(bookingIn:Boolean,code:string){
+    this.loading = true;
     this.bibo.Book(bookingIn,code).then(data=>{
       this.booked = data.verified;
       if (data.verified){
@@ -94,6 +96,7 @@ export class BiboComponent implements OnInit {
       } else if (data.code == 1) {
         this.msg = `Invalid code. Code may have expired.`
       }
+      this.loading = false;
     });
   }
 

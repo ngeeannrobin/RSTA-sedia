@@ -1,3 +1,13 @@
+<div class="img-container">
+    <div class="title">
+        Home
+    </div>
+    <img src="../../assets/11.png" class="eleven">
+    <div *ngIf="name!=undefined" class="welcome">
+        Welcome back, <br>{{name}}.
+    </div>
+</div>
+
 <div class="btn-container">
     <div class="btn" (click)="redirect('/bibo')">BIBO</div>
     <div class="btn" (click)="redirect('/profile')">Profile</div>
