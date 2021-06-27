@@ -76,5 +76,9 @@ export class FirestoreService {
     return doc.set(obj);
   }
 
+  GetGpsData() {
+    return this.GetRequest(this.db.doc(`data/geo`));
+  }
+
 
 }

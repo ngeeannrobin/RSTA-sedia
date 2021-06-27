@@ -1,18 +1,39 @@
-<!-- <div class="img-container">
-    <img src="../../assets/11.png" class="eleven">
-</div> -->
 
-<div class="book-btn-container">
-    <div (click)="bookIn()" class="book-btn">
+<div class="book-btn-container" *ngIf="!scan">
+    <div (click)="BookIn()" class="book-btn">
         Book In
     </div>
-    <div (click)="bookOut()" class="book-btn">
+    <div (click)="BookOut()" class="book-btn">
         Book Out
     </div>
 </div>
 
 
+<div class="book-btn-container" *ngIf="scan">
+    <div class="book-btn">
+        Input code manually
+    </div>
+    <div (click)="Cancel()" class="book-btn">
+        Cancel
+    </div>
+</div>
+
+
+
+
+<!-- camera -->
 <scanner *ngIf="scan" (qrstring)="qrstring($event)"></scanner>
+
+<!-- manual input -->
+
+
+<div class="dist-container" *ngIf="!scan">
+    Currently
+    <div class="dist">
+        {{distanceStr}}
+    </div>
+    away from RSTA office.
+</div>
 <div>
     {{msg}}
 </div>

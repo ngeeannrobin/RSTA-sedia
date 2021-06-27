@@ -12,11 +12,15 @@
     font-weight: bold;
 }
 
-.img-container{
+.dist-container{
     position: absolute;
     left: 50%; top: 30%;
-    max-height: 40vh;
-    transform: translate(-50%,-50%)
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.dist {
+    font-size: 2em;
 }
 
 .txt {

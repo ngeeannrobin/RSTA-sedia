@@ -31,6 +31,7 @@ import { ViewBiboComponent } from './view-bibo/view-bibo.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginEmailComponent } from './login-email/login-email.component';
+import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.component';
 
 
 
@@ -46,7 +47,8 @@ import { LoginEmailComponent } from './login-email/login-email.component';
     ChangeRankNameComponent,
     ViewBiboComponent,
     QrcodeComponent,
-    LoginEmailComponent
+    LoginEmailComponent,
+    BiboInputCodeComponent
   ],
   imports: [
     AngularFireAuthModule,
