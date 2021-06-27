@@ -28,7 +28,6 @@ export class MenuComponent implements OnInit {
         if (data == undefined){
           this.changeRankName = true;
         } else {
-          console.log(data);
           this.name = this.CraftName(data.rank,data.name);
         }
       })
