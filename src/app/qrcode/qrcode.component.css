@@ -11,6 +11,11 @@
     font-size: 1.5em;
 }
 
+.code {
+    font-size: 2em;
+    margin-bottom: 3vh;
+}
+
 ::ng-deep .qrcode img {
     max-height: min(90vw,90vh);
     max-width:  min(90vw,90vh);
