@@ -41,7 +41,7 @@ export class BiboComponent implements OnInit {
           this.distanceStr = `${this.distance / 1000} km`
         }
       })
-      await this.Delay(3000);
+      await this.Delay(500);
     }
 
   }
