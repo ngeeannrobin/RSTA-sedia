@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginEmailComponent } from './login-email/login-email.component';
 import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 
 
 
@@ -50,7 +51,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     QrcodeComponent,
     LoginEmailComponent,
     BiboInputCodeComponent,
-    NavBarComponent
+    NavBarComponent,
+    AdminMenuComponent
   ],
   imports: [
     AngularFireAuthModule,

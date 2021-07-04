@@ -11,8 +11,7 @@
 <div class="btn-container">
     <div class="btn" (click)="redirect('/bibo')">BIBO</div>
     <div class="btn" (click)="redirect('/profile')">Profile</div>
-    <div class="btn" (click)="redirect('/view-bibo')" *ngIf="isAdmin">View BIBO Records</div>
-    <div class="btn" (click)="redirect('/qr')" *ngIf="isAdmin">Show QR Code</div>
+    <div class="btn" (click)="redirect('/admin')" *ngIf="isAdmin">Admin menu</div>
 </div>
 
 <change-rank-name *ngIf="changeRankName" class="fs" (open)="HandleChange($event)" [data]="{}" [firstTime]="true"></change-rank-name>
