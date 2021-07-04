@@ -11,13 +11,14 @@ export class QrcodeComponent implements OnInit {
   
   constructor(private auth: AuthService, private admin: AdminService) { }
   code:string = "";
+  url:string = "";
   changeFrequency:number = 180;
   countDown:number = this.changeFrequency;
   changing:boolean = false;
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
       this.admin.GetCode().then(code=>{
-        this.code = code;
+        this.HandleCode(code);
         this.CountDown();
       })
     })
@@ -25,10 +26,15 @@ export class QrcodeComponent implements OnInit {
 
   ChangeCode(){
     this.admin.ChangeCode().then(txt=>{
-      this.code = txt;
+      this.HandleCode(txt);
       this.countDown = this.changeFrequency;
       this.changing = false;
     })
+  }
+
+  HandleCode(code:string){
+    this.code = code;
+    this.url = `rsta-sedia.web.app/code/${code}`;
   }
 
   async CountDown(){

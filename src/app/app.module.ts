@@ -34,6 +34,7 @@ import { LoginEmailComponent } from './login-email/login-email.component';
 import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { CodeComponent } from './code/code.component';
 
 
 
@@ -52,7 +53,8 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
     LoginEmailComponent,
     BiboInputCodeComponent,
     NavBarComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    CodeComponent
   ],
   imports: [
     AngularFireAuthModule,
