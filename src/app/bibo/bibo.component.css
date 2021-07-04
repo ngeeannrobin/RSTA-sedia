@@ -10,6 +10,8 @@
 .dist-container {top: 30%;}
 .msg-container {top: 10%;}
 
+.msg-container-loading {top: 50%}
+
 
 .book-btn {
     background-color: #49CD9B;
@@ -19,6 +21,7 @@
     margin: 10px;
     text-align: center;
     font-weight: bold;
+    width: 50vw;
 }
 
 

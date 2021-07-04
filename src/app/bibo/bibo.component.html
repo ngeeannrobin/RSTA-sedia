@@ -34,7 +34,7 @@
     </div>
     away from RSTA office.
 </div>
-<div class="msg-container">
+<div class="msg-container" [ngClass]="{'msg-container-loading': loading}">
     {{msg}}
 </div>
 

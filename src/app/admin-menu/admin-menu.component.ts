@@ -13,7 +13,9 @@ export class AdminMenuComponent implements OnInit {
   constructor(private auth:AuthService,private router:Router,private admin:AdminService) { }
 
   ngOnInit(): void {
-    this.auth.Init(true);
+    this.auth.Init(true).then(_=>{
+      this.CheckAdmin(this.auth.uid);
+    })
   }
 
   async redirect(route:string){

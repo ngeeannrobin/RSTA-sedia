@@ -16,7 +16,7 @@ export class BiboComponent implements OnInit {
   bookingIn: Boolean;
   msg: String = "";
   distance: number;
-  distanceStr: string;
+  distanceStr: string = "xxx";
   checking: boolean = true;
   loading: boolean = false;
   constructor(private auth: AuthService, private bibo: BiboService, private router: Router, private gps: GpsService) { }
@@ -97,7 +97,9 @@ export class BiboComponent implements OnInit {
         this.msg = `Invalid code. Code may have expired.`
       }
       this.loading = false;
-    });
+    }).catch(err=>{
+      this.msg = `An error has occured. idk what or why hehe. ${err}`;
+    })
   }
 
 }
