@@ -20,10 +20,15 @@ export class BiboService {
     })
   }
 
-  ViewBiboRecord(dt):Promise<any>{
+  ViewBiboRecord(dt:Date):Promise<any>{
     // return this.fs.GetBiboRecord("20210612");
-    return this.fs.GetBiboRecord(dt.getFullYear().toString() +
-    (dt.getMonth() + 1).toString().padStart(2,"0") +
-    dt.getDate().toString().padStart(2,"0"));
+    // return this.fs.GetBiboRecord(dt.getFullYear().toString() +
+    // (dt.getMonth() + 1).toString().padStart(2,"0") +
+    // dt.getDate().toString().padStart(2,"0"));
+    let start = new Date(dt);
+    let end = new Date(dt);
+    start.setHours(0,0,0,0);
+    end.setHours(23,59,59,999);
+    return this.fs.GetBiboRecord(start,end);
   }
 }

@@ -2,7 +2,6 @@
 
     <div class="title-container">
         BIBO Records on 
-        
         <br>
         <span *ngIf="!changingDate">{{ConvertDateToTitle(date)}}</span>
         <input *ngIf="changingDate" class="date-input" type="date" [(ngModel)]="dateString" #dateinput>

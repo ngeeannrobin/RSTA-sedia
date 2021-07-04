@@ -24,12 +24,6 @@ export class ViewBiboComponent implements OnInit {
     })
   }
 
-  onFocusOutEvent(event: any){
-
-    console.log(event.target.value);
- 
- }
-
   GetRecord(){
     this.changingDate=  false;
     this.date = this.ConvertInputToDate(this.dateString);
@@ -39,7 +33,6 @@ export class ViewBiboComponent implements OnInit {
   }
 
   ToggleDate(){
-    console.log(this.changingDate)
     if (this.changingDate){
       this.GetRecord();
     } else {

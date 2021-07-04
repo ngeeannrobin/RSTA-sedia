@@ -61,8 +61,11 @@ export class FirestoreService {
    })
   }
 
-  GetBiboRecord(dateId:string):Promise<any>{
-    const ref = this.db.collection(`rec/${dateId}/rec`).ref.orderBy("time","desc");
+  GetBiboRecord(start:Date, end:Date):Promise<any>{
+    const ref = this.db.collection(`rec`).ref
+      .where('time','>=',start)
+      .where('time','<=',end)
+      .orderBy("time","desc");
     return this.GetRequestByRef(ref);
   }
 
