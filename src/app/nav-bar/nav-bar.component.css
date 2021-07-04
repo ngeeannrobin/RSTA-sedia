@@ -5,6 +5,10 @@
     padding: 1em;
 }
 
+.dark {
+    color: black;
+}
+
 .back {
     margin-left: 1em;
 }
