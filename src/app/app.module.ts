@@ -32,6 +32,7 @@ import { QrcodeComponent } from './qrcode/qrcode.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginEmailComponent } from './login-email/login-email.component';
 import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 
@@ -48,7 +49,8 @@ import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.compon
     ViewBiboComponent,
     QrcodeComponent,
     LoginEmailComponent,
-    BiboInputCodeComponent
+    BiboInputCodeComponent,
+    NavBarComponent
   ],
   imports: [
     AngularFireAuthModule,

@@ -15,12 +15,6 @@ export class MenuComponent implements OnInit {
   isAdmin: boolean = false;
   changeRankName: boolean = false;
   name: string;
-  ranks = [
-    "REC","PTE","PFC","LCP","CPL","CFC",
-    "3SG","2SG","1SG","SSG","MSG", 
-    // "3WO","2WO","1WO","MWO","SWO","CWO",
-    "2LT","LTA","CPT"
-  ]
 
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
@@ -70,7 +64,7 @@ export class MenuComponent implements OnInit {
         break;
       // ==========
       case "2LT":
-        rankname = "Sir ";
+        rankname = "Second Lieutenant ";
         break;
       // ==========
       case "LTA":
