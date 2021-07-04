@@ -31,4 +31,8 @@ export class BiboService {
     end.setHours(23,59,59,999);
     return this.fs.GetBiboRecord(start,end);
   }
+
+  OwnBiboRecord(uid:string):Promise<any>{
+    return this.fs.GetBiboByUid(uid);
+  }
 }

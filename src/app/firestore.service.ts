@@ -69,6 +69,13 @@ export class FirestoreService {
     return this.GetRequestByRef(ref);
   }
 
+  GetBiboByUid(uid:string):Promise<any>{
+    const ref = this.db.collection(`rec`).ref
+      .where('uid','==',uid)
+      .orderBy("time","desc");
+    return this.GetRequestByRef(ref);
+  }
+
   GetCode(){
     return this.GetRequest(this.db.doc("data/_"));
   }

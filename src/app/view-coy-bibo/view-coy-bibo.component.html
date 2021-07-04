@@ -1,0 +1,6 @@
+<view-bibo [data]="data" [title]="title"></view-bibo>
+<div class="setting-btn" (click)="ChangeDate()">
+    <i class="fa fa-cog fa-2x"></i>
+</div>
+
+<change-date *ngIf="changingDate" class="fs" [dateStr]="dateString" (dateEmitter)="HandleDateChange($event)"></change-date>

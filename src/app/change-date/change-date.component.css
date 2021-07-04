@@ -20,27 +20,6 @@
     margin-bottom: 5vh;
 }
 
-.rank-container {
-    margin-bottom: 2.5vh;
-    line-height: 1.5em;
-}
-
-
-.rank-btn-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-}
-
-.rank-btn {
-    flex: 0 0 12vw;
-    text-align: center;
-    background-color: rgb(240,240,240);
-    margin: 4px; margin-left:0; margin-top: 0;
-    border-radius: 5px;
-    padding: 5px;
-}
-
 .selected {
     background-color: rgb(210,210,210);
 }

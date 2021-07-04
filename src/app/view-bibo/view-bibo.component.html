@@ -1,18 +1,8 @@
 <div class="container">
 
     <div class="title-container">
-        BIBO Records on 
-        <br>
-        <span *ngIf="!changingDate">{{ConvertDateToTitle(date)}}</span>
-        <input *ngIf="changingDate" class="date-input" type="date" [(ngModel)]="dateString" #dateinput>
-        <i class="fa ibtn" (click)="ToggleDate()" [ngClass]="{'fa-calendar-o':!changingDate,'fa-check':changingDate}"></i>
+        {{title}}
     </div>
-    <div>
-        
-    </div>
-    <!-- <div class="phantom-container">
-        BIBO Records on
-    </div> -->
     <div *ngIf="!NoRecord()">
         <div *ngFor="let rec of data" class="record-container">
             <span class="index-container">
@@ -34,3 +24,4 @@
     </div>
 </div>
 
+<nav-bar></nav-bar>

@@ -35,6 +35,9 @@ import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.compon
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { CodeComponent } from './code/code.component';
+import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
+import { ChangeDateComponent } from './change-date/change-date.component';
+import { ViewOwnBiboComponent } from './view-own-bibo/view-own-bibo.component';
 
 
 
@@ -54,7 +57,10 @@ import { CodeComponent } from './code/code.component';
     BiboInputCodeComponent,
     NavBarComponent,
     AdminMenuComponent,
-    CodeComponent
+    CodeComponent,
+    ViewCoyBiboComponent,
+    ChangeDateComponent,
+    ViewOwnBiboComponent
   ],
   imports: [
     AngularFireAuthModule,
