@@ -1,5 +1,5 @@
 .setting-btn {
-    position: absolute;
+    position: fixed;
     transform: translate(-50%,-50%);
     bottom: 0.5em;
     right: 0.5em;

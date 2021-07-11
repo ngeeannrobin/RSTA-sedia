@@ -54,6 +54,8 @@ export class ViewCoyBiboComponent implements OnInit {
     if (!$event.cancel){
       this.date = this.ConvertInputToDate($event.dateStr);
       this.GetRecord(this.date);
+    } else {
+      this.changingDate = false;
     }
   }
 

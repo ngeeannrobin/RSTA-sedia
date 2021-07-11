@@ -19,6 +19,8 @@ export class BiboComponent implements OnInit {
   distanceStr: string = "xxx";
   checking: boolean = true;
   loading: boolean = false;
+  useCamera: boolean = true;
+
   constructor(private auth: AuthService, private bibo: BiboService, private router: Router, private gps: GpsService) { }
 
   ngOnInit(): void {
@@ -53,12 +55,17 @@ export class BiboComponent implements OnInit {
   BookIn() {
     this.bookingIn = true;
     this.msg = "";
-    this.Scan();
+    if (this.useCamera)
+      this.Scan();
+    else
+      this.Manual();
   }
   BookOut() {
     this.bookingIn = false
-    this.msg = "";
-    this.Scan();
+    if (this.useCamera)
+      this.Scan();
+    else
+      this.Manual();
   }
 
   Manual() {
@@ -101,5 +108,4 @@ export class BiboComponent implements OnInit {
       this.msg = `An error has occured. idk what or why hehe. ${err}`;
     })
   }
-
 }
