@@ -9,6 +9,10 @@ export class FirestoreService {
 
   constructor(private db: AngularFirestore) { }
 
+  GetRequestObservable(doc): Observable<any> {
+    return doc.valueChanges();
+  }
+
   GetRequest(doc): Promise<any>{
     return new Promise((res,rej) => {
       let disposeable = doc.valueChanges().subscribe(
@@ -80,10 +84,17 @@ export class FirestoreService {
     return this.GetRequest(this.db.doc("data/_"));
   }
 
-  UpdateCode(txt: string){
+  GetCodeObservable(){
+    return this.GetRequestObservable(this.db.doc("data/_"));
+  }
+
+  UpdateCode(txt: string, freq: number){
     const doc = this.db.doc("data/_");
-    const obj = {code: txt};
-    return doc.set(obj);
+    let date = new Date();
+    date.setSeconds(date.getSeconds() + freq);
+
+    const obj = {code: txt, nxtUpdt: date};
+    return doc.set(obj, {merge: true});
   }
 
   GetGpsData() {

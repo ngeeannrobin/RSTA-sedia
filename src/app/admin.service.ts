@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({
@@ -24,7 +25,12 @@ export class AdminService {
     
   }
 
-  ChangeCode(){
+
+  GetCodeObservable():Observable<any> {
+    return this.fs.GetCodeObservable();
+  }
+
+  ChangeCode(freq){
     const length = 8;
     const char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     let newCode = "";
@@ -32,11 +38,7 @@ export class AdminService {
       newCode += char[Math.floor(Math.random() * char.length)]
     }
 
-    return new Promise<string>((res,rej)=>{
-      this.fs.UpdateCode(newCode).then(_=>{
-        res(newCode);
-      }).catch(err=>{console.log(err)})
-    })
+    this.fs.UpdateCode(newCode,freq)
 
 
   }
