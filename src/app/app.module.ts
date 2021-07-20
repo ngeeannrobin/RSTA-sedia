@@ -38,6 +38,7 @@ import { CodeComponent } from './code/code.component';
 import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
 import { ChangeDateComponent } from './change-date/change-date.component';
 import { ViewOwnBiboComponent } from './view-own-bibo/view-own-bibo.component';
+import { MessageComponent } from './message/message.component';
 
 
 
@@ -60,7 +61,8 @@ import { ViewOwnBiboComponent } from './view-own-bibo/view-own-bibo.component';
     CodeComponent,
     ViewCoyBiboComponent,
     ChangeDateComponent,
-    ViewOwnBiboComponent
+    ViewOwnBiboComponent,
+    MessageComponent
   ],
   imports: [
     AngularFireAuthModule,

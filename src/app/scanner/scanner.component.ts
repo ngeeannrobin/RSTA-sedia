@@ -8,6 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class ScannerComponent implements OnInit {
 
   @Output() qrstring: EventEmitter<string> = new EventEmitter();
+  @Output() errEmitter: EventEmitter<string> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -15,6 +16,14 @@ export class ScannerComponent implements OnInit {
 
   public scanSuccessHandler($event: any) {
     this.qrstring.emit($event);
+  }
+
+  public error($event: any) {
+    console.log($event)
+  }
+
+  public camNotFound($event) {
+    this.errEmitter.emit("No camera found.");
   }
 
 

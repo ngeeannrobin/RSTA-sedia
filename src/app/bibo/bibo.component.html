@@ -6,7 +6,7 @@
     <div (click)="BookOut()" class="book-btn">
         Book Out
     </div>
-    <div class="camera-toggle">
+    <div class="camera-toggle" *ngIf="permission.camera">
         <span class="use-camera-text">Use Camera</span>
         
         <label class="switch" >
@@ -14,39 +14,40 @@
             <span class="slider round"></span>
         </label>
     </div>
-
 </div>
-
-
-
-
-
-
 
 <!-- camera -->
-<scanner *ngIf="scan" (qrstring)="qrstring($event)"></scanner>
+<div *ngIf="scan">
+    <scanner (qrstring)="qrstring($event)" (errEmitter)="error($event)"></scanner>
 
-<div class="book-btn-container" *ngIf="scan || manual">
-    <div (click)="Manual()" class="manual-btn">
-        Input code manually
-    </div>
-    <div (click)="Cancel()" class="book-btn">
-        Cancel
+    <div class="book-btn-container">
+        <div (click)="Cancel()" class="book-btn">
+            Cancel
+        </div>
     </div>
 </div>
+
 
 <!-- manual input -->
 <bibo-input-code class="fs" *ngIf="manual" (codeEmitter)="code($event)"></bibo-input-code>
 
-<div class="dist-container" *ngIf="!scan && !manual && !booked && !loading">
+<!-- geolocation -->
+<div class="dist-container" *ngIf="showlocation==1">
     Currently
     <div class="dist">
         {{distanceStr}}
     </div>
     away from RSTA office.
 </div>
-<div class="msg-container" [ngClass]="{'msg-container-loading': loading || booked}">
+<div class="dist-container" *ngIf="showlocation==2">
+    Geolocation disabled. Please enable thx.
+</div>
+
+<!-- message -->
+<div class="msg-container" [ngClass]="{'msg-container-loading': loading || booked || showlocation===0}">
     {{msg}}
 </div>
 
+
+<message [msg]="msgBox" (dismiss)="DismissMessage()" *ngIf="msgBox!==null"></message>
 <nav-bar></nav-bar>

@@ -18,3 +18,14 @@
     left: 50%; top: calc(10% + min(45vw, 45vh));
     transform: translate(-50%,-50%);
 }
+
+.scanner {
+    width: 80vw;
+    height: 80vw;
+    border-style: solid;
+    border-color: white;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+}

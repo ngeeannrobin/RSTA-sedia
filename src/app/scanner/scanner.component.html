@@ -3,4 +3,7 @@
     Scanner loading...
 </div>
 
-<zxing-scanner #scanner (scanSuccess)="scanSuccessHandler($event)">
+<zxing-scanner #scanner (scanSuccess)="scanSuccessHandler($event)" [formats]="['QR_CODE']" (camerasNotFound)="camNotFound($event)" (scanError)="error($event)"></zxing-scanner>
+<!-- <div>
+    <quar-scanner (scanSuccess)="scanSuccessHandler($event)" class="scanner"></quar-scanner>
+</div> -->
