@@ -5,6 +5,10 @@
     transform: translate(-50%,-50%);
 }
 
+.eleven {
+    max-width: 50vw;
+}
+
 .title {
     font-size: 2em;
     text-align: center;
