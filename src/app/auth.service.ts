@@ -62,6 +62,10 @@ export class AuthService {
     return firebase.auth().createUserWithEmailAndPassword(email,password);
   }
 
+  EmailResetPassword(email) {
+    return firebase.auth().sendPasswordResetEmail(email);
+  }
+
 
   SignOut(): Promise<void> {
     return this.auth.signOut()

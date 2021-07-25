@@ -48,6 +48,8 @@ export class LoginComponent implements OnInit {
     if ($event.checked){
       if(this.signUp){
         this.EmailSignUp($event.email,$event.password);
+      } else if ($event.reset) {
+        this.EmailResetPassword($event.email);
       } else {
         this.EmailSignIn($event.email,$event.password);
       }
@@ -63,6 +65,16 @@ export class LoginComponent implements OnInit {
 
   EmailSignIn(email, password){
     this.auth.EmailSignIn(email, password).catch(err=>{
+      this.message = err.message;
+    })
+  }
+
+  EmailResetPassword(email){
+    this.auth.EmailResetPassword(email).then(_=>{
+      this.message = "An email has been sent to your inbox to reset your password UwU"
+    })
+    
+    .catch(err=>{
       this.message = err.message;
     })
   }

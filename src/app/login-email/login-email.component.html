@@ -1,11 +1,12 @@
 <div class="container">
     <div class="inp-container">
-        <a class="label">Email</a> <input [(ngModel)]="this.cred.email" class="inp" type="email">
+        <a class="label">Email {{forgetMode?'(Reset password)':''}}</a> <input [(ngModel)]="this.cred.email" class="inp" type="email">
         <div class="error">{{msg.email}}</div>
     </div>
-    <div class="inp-container">
+    <div class="inp-container" *ngIf="!forgetMode">
         <a class="label">Password</a> <input [(ngModel)]="this.cred.password" class="inp" type="password">
         <div class="error">{{msg.password}}</div>
+        <div class="forget" (click)="ForgetPassword()">Forget password</div>
     </div>
     <div class="btn-container">
         <a class="btn cancel" (click)="cancel()">Cancel</a>

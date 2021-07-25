@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'login-email',
@@ -7,19 +7,30 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class LoginEmailComponent implements OnInit {
   @Output() emitter: EventEmitter<any> = new EventEmitter();
+  @Input() showForget: Boolean = false;
   constructor() { }
 
   cred: any = {email: "",password: "", checked: false}
   msg: any = {email: "", password: ""}
+  forgetMode: boolean = false;
 
   ngOnInit(): void {
   }
 
   confirm() {
-    if (this.Verify()){
-      this.cred.checked=true;
-      this.emitter.emit(this.cred)
+    if (!this.forgetMode){
+      if (this.Verify()){
+        this.cred.checked=true;
+        this.emitter.emit(this.cred)
+      }
+    } else {
+      if (this.VerifyEmail(this.cred.email)){
+        this.cred.checked = true;
+        this.cred.reset=true;
+        this.emitter.emit(this.cred);
+      }
     }
+
   }
 
   cancel() {
@@ -52,6 +63,12 @@ export class LoginEmailComponent implements OnInit {
       return false
     }
     return true;
+  }
+
+  ForgetPassword(){
+
+    this.forgetMode = true;
+    this.msg.email = "Enter email and tap 'Confirm'.";
   }
 
 }

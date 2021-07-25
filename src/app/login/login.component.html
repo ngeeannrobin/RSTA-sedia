@@ -23,4 +23,4 @@
 
 <div class="msg">{{message}}</div>
 
-<login-email *ngIf="promptEmail" class="fs" (emitter)="EmailPassword($event)"></login-email>
+<login-email *ngIf="promptEmail" class="fs" (emitter)="EmailPassword($event)" [showForget]='!signUp'></login-email>
