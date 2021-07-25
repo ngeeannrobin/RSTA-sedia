@@ -27,7 +27,6 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 // Misc
 import { FormsModule } from '@angular/forms';
-import { ViewBiboComponent } from './view-bibo/view-bibo.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginEmailComponent } from './login-email/login-email.component';
@@ -35,10 +34,9 @@ import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.compon
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { CodeComponent } from './code/code.component';
-import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
 import { ChangeDateComponent } from './change-date/change-date.component';
-import { ViewOwnBiboComponent } from './view-own-bibo/view-own-bibo.component';
 import { MessageComponent } from './message/message.component';
+import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
 
 
 
@@ -52,7 +50,6 @@ import { MessageComponent } from './message/message.component';
     MenuComponent,
     ProfileComponent,
     ChangeRankNameComponent,
-    ViewBiboComponent,
     QrcodeComponent,
     LoginEmailComponent,
     BiboInputCodeComponent,
@@ -61,7 +58,6 @@ import { MessageComponent } from './message/message.component';
     CodeComponent,
     ViewCoyBiboComponent,
     ChangeDateComponent,
-    ViewOwnBiboComponent,
     MessageComponent
   ],
   imports: [
