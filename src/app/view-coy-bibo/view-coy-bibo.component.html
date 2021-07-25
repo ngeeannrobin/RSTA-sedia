@@ -1,6 +1,42 @@
-<view-bibo [data]="data" [title]="title"></view-bibo>
-<div class="setting-btn" (click)="ChangeDate()">
-    <i class="fa fa-cog fa-2x"></i>
+<div class="container">
+
+    <div class="title-container">
+        {{title}}
+    </div>
+    <div *ngIf="!NoRecord()">
+        <div *ngFor="let rec of data" class="record-container">
+            <span class="index-container">
+                <span class="index">
+                    {{data.indexOf(rec)+1}}.
+                </span>
+            </span>
+            <span>
+                <span class="time">{{ConvertDateToHours(rec.time)}}</span>
+                <span class="in-out">(Book {{rec.in?"in":"out"}})</span>
+                <br>
+                <span class="rank">{{rec.rank}} </span>
+                <span class="name">{{rec.name}} </span>
+            </span>
+        </div>
+    </div>
+    <div *ngIf="NoRecord()" class="nr-container">
+        <span class="nr-txt">No records available.</span>
+    </div>
 </div>
+
+<nav-bar [darkMode]="true"></nav-bar>
+
+<div class="btn-container">
+    <div class="setting-btn" (click)="ChangeDate()">
+        <i class="fa fa-calendar fa-2x"></i>
+    </div>
+    <div class="download-btn" (click)="Download()">
+        <i class="fa fa-download fa-2x"></i>
+    </div>
+
+</div>
+
+
+
 
 <change-date *ngIf="changingDate" class="fs" [dateStr]="dateString" (dateEmitter)="HandleDateChange($event)"></change-date>

@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { BiboService } from '../bibo.service';
+import { ExportService } from '../export.service';
 
 @Component({
   selector: 'app-view-coy-bibo',
@@ -9,7 +10,7 @@ import { BiboService } from '../bibo.service';
 })
 export class ViewCoyBiboComponent implements OnInit {
 
-  constructor(private auth: AuthService, private bibo: BiboService) { }
+  constructor(private auth: AuthService, private bibo: BiboService, private xport: ExportService) { }
   data:any = {};
   dateString: string;
   date:Date = new Date();
@@ -59,4 +60,17 @@ export class ViewCoyBiboComponent implements OnInit {
     }
   }
 
+  Download(){
+    this.xport.ExportExcel(this.data,this.ConvertDateToTitle(this.date));
+  }
+
+
+  ConvertDateToHours(ts){
+    const dt = new Date(ts.seconds*1000);
+    return `${dt.getHours().toString().padStart(2,"0")}${dt.getMinutes().toString().padStart(2,"0")} hrs`
+  }
+
+  NoRecord(){
+    return Object.keys(this.data).length===0
+  }
 }
