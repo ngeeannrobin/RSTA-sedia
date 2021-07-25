@@ -30,10 +30,9 @@
     <div class="setting-btn" (click)="ChangeDate()">
         <i class="fa fa-calendar fa-2x"></i>
     </div>
-    <div class="download-btn" (click)="Download()">
+    <div *ngIf="!NoRecord()" class="download-btn" (click)="Download()">
         <i class="fa fa-download fa-2x"></i>
     </div>
-
 </div>
 
 
