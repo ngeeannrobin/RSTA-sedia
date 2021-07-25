@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Workbook } from 'exceljs';
+import * as Excel from 'exceljs';
 import * as fs from 'file-saver';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ExportService {
 
   ExportExcel(data,dateString){
     console.log(data);
-    let workbook = new Workbook();
+    let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet("Bibo");
 
     // Declare headers
