@@ -22,7 +22,7 @@
 }
 
 .btn-container {
-    width: 80vw;
+    width: min(80vw, 320px);
     position: absolute;
     left: 50%; top: 80%;
     transform: translate(-50%,-50%);

@@ -2,7 +2,7 @@
     position: absolute;
     top:40%; left: 50%;
     transform: translate(-50%,-50%);
-    width: 80vw;
+    width: min(80vw, 450px);
     background-color: white;
     padding: 5%;
     box-shadow: 2px 2px 2px 1px rgba(255,255,255,0.5);
@@ -30,7 +30,7 @@
 }
 
 .btn {
-    flex: 0 0 20vw;
+    flex: 0 0 min(20vw, 100px);
     text-align: center;
     border-radius: 5px;
     padding: 5px;
@@ -47,4 +47,10 @@
 
 .error {
     color: red;
+}
+
+.forget {
+    color: grey;
+    text-decoration: underline;
+    font-size: 0.95em;
 }

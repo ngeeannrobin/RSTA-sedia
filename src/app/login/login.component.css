@@ -2,7 +2,7 @@
     
     
     left: 50%;
-    top: 75%;
+    top: 65%;
     transform: translate(-50%,-50%);
     position:absolute;
 
@@ -19,7 +19,7 @@
     background-color: #49CD9B;
     color: black;
     border-radius: 5px;
-    width: 50vw;
+    width: min(50vw, 200px);
     height: 5vh;
     line-height: 5vh;
     font-weight: bold;
@@ -54,6 +54,10 @@
     max-height: 40vh;
 
     transform: translate(-50%,-50%)
+}
+
+.eleven {
+    max-width: min(50vw, 200px);
 }
 
 .fs {
