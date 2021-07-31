@@ -6,7 +6,7 @@
     <div class="inp-container" *ngIf="!forgetMode">
         <a class="label">Password</a> <input [(ngModel)]="this.cred.password" class="inp" type="password">
         <div class="error">{{msg.password}}</div>
-        <div class="forget" (click)="ForgetPassword()">Forget password</div>
+        <div class="forget" (click)="ForgetPassword()" *ngIf="showForget">Forget password?</div>
     </div>
     <div class="btn-container">
         <a class="btn cancel" (click)="cancel()">Cancel</a>
