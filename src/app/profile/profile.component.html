@@ -1,7 +1,7 @@
 <div class="profile">
     <img src="{{userData.url}}" class="profile-img" />
     <div class="user-info">
-        <div class="rank">{{userData.rank}}</div>
+        <div class="cat">{{userData.cat}}</div>
         <div class="name">{{userData.name}}</div>
         
     </div>
@@ -11,13 +11,13 @@
         <div *ngIf="userData.lastBookOut">Last book out: {{ConvertDate(userData.lastBookOut)}}</div>
     </div>
     <div class="btn-container">
-        <div class="btn"><a (click)="changeRankName = true">Change rank/name</a></div>
+        <!-- <div class="btn"><a (click)="changeRankName = true">Change name</a></div> -->
         <div class="btn logout"><a (click)="signOut()">Logout</a></div>
     </div>
 </div>
 
 <change-rank-name *ngIf="changeRankName" class="fs" (open)="HandleChange($event)" [data]="userData"></change-rank-name>
 
-<div class="version">v2021.07.25.1</div>
+<div class="version">v2021.07.31.0</div>
 
 <nav-bar></nav-bar>

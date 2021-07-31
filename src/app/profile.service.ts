@@ -12,7 +12,7 @@ export class ProfileService {
     return this.fs.GetUser(uuid);
   }
 
-  UpdateProfile(uuid,rank,name){
-    return this.fs.UpdateUser(uuid,rank,name);
+  UpdateProfile(uuid,name){
+    return this.fs.UpdateUser(uuid,name);
   }
 }

@@ -11,13 +11,12 @@ export class ExportService {
 
 
   ExportExcel(data,dateString){
-    console.log(data);
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet("Bibo");
 
     // Declare headers
     worksheet.columns = [
-      { header: 'Rank', key: 'rank'},
+      { header: 'Cat', key: 'cat'},
       { header: 'Name', key: 'name'},
       { header: 'Book In Date', key: 'bid'},
       { header: 'Book In Time', key: 'bit'},
@@ -29,7 +28,7 @@ export class ExportService {
     let longestName = 0;
     data.forEach(record => {
       let row = [];
-      row[0] = record.rank;
+      row[0] = record.cat?record.cat:'NA';
       row[1] = record.name;
       row[record.in?2:4] = this.ConvertDateToDate(record.time);
       row[record.in?3:5] = this.ConvertDateToHour(record.time);
@@ -40,7 +39,7 @@ export class ExportService {
     // Apply styles
     worksheet.getRows(1,1)[0].font = {bold: true};
 
-    worksheet.getColumn("rank").width = 5;
+    worksheet.getColumn("cat").width = 5;
     worksheet.getColumn("name").width = longestName+2;
 
 

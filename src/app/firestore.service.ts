@@ -47,10 +47,9 @@ export class FirestoreService {
     return this.GetRequest(this.db.doc(`user/${uuid}`));
   }
 
-  UpdateUser(uuid,rank,name){
+  UpdateUser(uuid,name){
     const doc = this.db.doc(`user/${uuid}`);
     const obj = {
-      rank: rank,
       name: name.toUpperCase()
     }
     return doc.set(obj,{merge:true});

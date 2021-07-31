@@ -13,17 +13,9 @@ export class ChangeRankNameComponent implements OnInit {
   constructor(private auth: AuthService, private prof: ProfileService) { }
   @Input() firstTime:boolean = false;
   @Input() data:any;
-  ranks = [
-    "REC","PTE","PFC","LCP","CPL","CFC",
-    "3SG","2SG","1SG","SSG","MSG", 
-    // "3WO","2WO","1WO","MWO","SWO","CWO",
-    "2LT","LTA","CPT"
-  ]
-  selectedRank: string;
   name: string;
 
   ngOnInit(): void {
-    this.selectedRank = this.data.rank;
     this.name = this.data.name;
   }
 
@@ -32,9 +24,8 @@ export class ChangeRankNameComponent implements OnInit {
   }
 
   confirm(){
-    if (this.selectedRank==undefined || this.name==undefined) {return;}
-    this.prof.UpdateProfile(this.auth.uid,this.selectedRank,this.name).then(_=>{
-      this.data.rank = this.selectedRank;
+    if (this.name==undefined) {return;}
+    this.prof.UpdateProfile(this.auth.uid,this.name).then(_=>{
       this.data.name = this.name.toUpperCase();
       this.cancel();
     })
