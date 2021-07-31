@@ -14,10 +14,13 @@
         <!-- <div class="btn"><a (click)="changeRankName = true">Change name</a></div> -->
         <div class="btn logout"><a (click)="signOut()">Logout</a></div>
     </div>
+    <div class="uid">
+        User ID: {{auth.uid}}
+    </div>
 </div>
 
 <change-rank-name *ngIf="changeRankName" class="fs" (open)="HandleChange($event)" [data]="userData"></change-rank-name>
 
-<div class="version">v2021.07.31.0</div>
+<div class="version">v2021.07.31.1</div>
 
 <nav-bar></nav-bar>

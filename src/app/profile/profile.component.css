@@ -57,3 +57,11 @@
     top: 0; right: 0;
     padding: 1em;
 }
+
+.uid {
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
