@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   GetProfile(uid){
     this.prof.GetProfile(uid).then(data=>{
       this.userData = data;
+      this.userData.uid = uid;
       this.userData.url = this.auth.GetCurrentUser().photoURL || "../../assets/11.png";
     })
   }
