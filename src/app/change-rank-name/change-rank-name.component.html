@@ -1,8 +1,14 @@
 <div class="container">
-    <div class="plt-container">
+    <!-- <div class="plt-container">
         <a class="label">Platoon</a>
-        <div class="plt-btn-container">
-            <a *ngFor="let plt of plts" class="plt-btn" [ngClass]="{'selected':plt==selectedPlt}" (click)="selectedPlt=plt">{{plt}} </a>
+        <div class="cat-btn-container">
+            <a *ngFor="let plt of plts" class="cat-btn" [ngClass]="{'selected':plt==selectedPlt}" (click)="selectedPlt=plt">{{plt}} </a>
+        </div>
+    </div> -->
+    <div class="cat-container">
+        <a class="label">Category</a>
+        <div class="cat-btn-container">
+            <a *ngFor="let cat of cats" class="cat-btn" [ngClass]="{'selected':cat==selectedCat}" (click)="selectedCat=cat">{{cat}} </a>
         </div>
     </div>
     <div>
