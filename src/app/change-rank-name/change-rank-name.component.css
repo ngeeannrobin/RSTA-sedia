@@ -20,23 +20,23 @@
     margin-bottom: 5vh;
 }
 
-.rank-container {
+.plt-container {
     margin-bottom: 2.5vh;
     line-height: 1.5em;
 }
 
 
-.rank-btn-container {
+.plt-btn-container {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
 }
 
-.rank-btn {
-    flex: 0 0 12vw;
+.plt-btn {
+    flex: 0 0 10vw;
     text-align: center;
     background-color: rgb(240,240,240);
-    margin: 4px; margin-left:0; margin-top: 0;
+    margin-right: 1em;
     border-radius: 5px;
     padding: 5px;
 }

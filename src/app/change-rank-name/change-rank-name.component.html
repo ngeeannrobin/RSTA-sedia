@@ -1,10 +1,10 @@
 <div class="container">
-    <!-- <div class="rank-container">
-        <a class="label">Rank</a>
-        <div class="rank-btn-container">
-            <a *ngFor="let rank of ranks" class="rank-btn" [ngClass]="{'selected':rank==selectedRank}" (click)="selectedRank=rank">{{rank}} </a>
+    <div class="plt-container">
+        <a class="label">Platoon</a>
+        <div class="plt-btn-container">
+            <a *ngFor="let plt of plts" class="plt-btn" [ngClass]="{'selected':plt==selectedPlt}" (click)="selectedPlt=plt">{{plt}} </a>
         </div>
-    </div> -->
+    </div>
     <div>
         <a class="label">Name</a> <input [(ngModel)]="name" class="name">
     </div>

@@ -13,7 +13,11 @@ export class ChangeRankNameComponent implements OnInit {
   constructor(private auth: AuthService, private prof: ProfileService) { }
   @Input() firstTime:boolean = false;
   @Input() data:any;
-  name: string;
+  plts = [
+    1,2,3
+  ]
+  selectedPlt: string;
+  name: string = "";
 
   ngOnInit(): void {
     this.name = this.data.name;
@@ -24,8 +28,8 @@ export class ChangeRankNameComponent implements OnInit {
   }
 
   confirm(){
-    if (this.name==undefined) {return;}
-    this.prof.UpdateProfile(this.auth.uid,this.name).then(_=>{
+    if (this.name.trim()=="" || this.selectedPlt==undefined) {return;}
+    this.prof.UpdateProfile(this.auth.uid,this.selectedPlt, this.name).then(_=>{
       this.data.name = this.name.toUpperCase();
       this.cancel();
     })
