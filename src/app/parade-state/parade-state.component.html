@@ -1,0 +1,12 @@
+<div *ngIf="init">
+    <table>
+        <div *ngFor="let plt of ['0','1','2','3','4']">
+            {{title[plt]}} – [xx/{{paradeState.people[plt].length}}]
+            <tr *ngFor="let person of paradeState.people[plt]">
+                - {{person.cat}} {{person.name}}
+            </tr>
+            <br/>
+        </div>
+    
+    </table>
+</div>

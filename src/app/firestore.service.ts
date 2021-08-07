@@ -102,5 +102,14 @@ export class FirestoreService {
     return this.GetRequest(this.db.doc(`data/geo`));
   }
 
+  // PARADE STATE
+
+  GetPeople() {
+    return this.GetRequest(this.db.collection(`person`));
+  }
+
+  GetParadeStateHeading() {
+    return this.GetRequest(this.db.doc(`data/parade-state`))
+  }
 
 }

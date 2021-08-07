@@ -5,6 +5,7 @@ import { BiboComponent } from './bibo/bibo.component';
 import { CodeComponent } from './code/code.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
+import { ParadeStateComponent } from './parade-state/parade-state.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "view-bibo", component: ViewCoyBiboComponent},
   {path: "qr", component: QrcodeComponent},
   {path: "admin", component: AdminMenuComponent},
+  {path: "parade-state", component: ParadeStateComponent},
   {path: "code/:code", component: CodeComponent},
   {path: "", pathMatch: "full", redirectTo: "login"}
 ];

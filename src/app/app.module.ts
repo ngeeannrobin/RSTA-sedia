@@ -37,6 +37,7 @@ import { CodeComponent } from './code/code.component';
 import { ChangeDateComponent } from './change-date/change-date.component';
 import { MessageComponent } from './message/message.component';
 import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
+import { ParadeStateComponent } from './parade-state/parade-state.component';
 
 
 
@@ -58,7 +59,8 @@ import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
     CodeComponent,
     ViewCoyBiboComponent,
     ChangeDateComponent,
-    MessageComponent
+    MessageComponent,
+    ParadeStateComponent
   ],
   imports: [
     AngularFireAuthModule,
