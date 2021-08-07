@@ -9,10 +9,15 @@ export class ProfileService {
   constructor(private fs: FirestoreService) { }
 
   GetProfile(uuid) {
-    return this.fs.GetUser(uuid);
+    let prom = new Promise<any>(res=>{
+      this.fs.GetUser(uuid).then(data=>{
+        res(data[0]);
+      });
+    });
+    return prom;
   }
 
-  UpdateProfile(uuid,cat,name){
-    return this.fs.UpdateUser(uuid,cat,name);
+  UpdateProfile(uuid,name){
+    return this.fs.UpdateUser(uuid,name);
   }
 }

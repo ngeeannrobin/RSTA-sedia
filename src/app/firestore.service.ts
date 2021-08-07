@@ -44,14 +44,15 @@ export class FirestoreService {
   }
 
   GetUser(uuid) {
-    return this.GetRequest(this.db.doc(`user/${uuid}`));
+    const ref = this.db.collection(`person`).ref
+    .where('uid','==',uuid);
+    return this.GetRequestByRef(ref);
   }
 
-  UpdateUser(uuid,cat,name){
+  UpdateUser(uuid,name){
     const doc = this.db.doc(`user/${uuid}`);
     const obj = {
-      name: name.toUpperCase(),
-      cat: cat
+      name: name.toUpperCase()
     }
     return doc.set(obj,{merge:true});
   }
