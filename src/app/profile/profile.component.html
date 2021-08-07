@@ -16,6 +16,8 @@
     </div>
     <div class="uid">
         User ID: {{userData.uid}}
+        <i *ngIf="!copy" class="fa fa-clipboard fa-lg" aria-hidden="true" (click)="Copy()"></i>
+        <i *ngIf="copy" class="fa fa-check fa-lg" aria-hidden="true"></i>
     </div>
 </div>
 

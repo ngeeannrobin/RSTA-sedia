@@ -63,5 +63,12 @@
     bottom: 1em;
     left: 50%;
     transform: translateX(-50%);
+    width: 100%;
     text-align: center;
+    font-size: 0.75em;
+
+    -webkit-user-select: text;  /* Chrome all / Safari all */
+    -moz-user-select: text;     /* Firefox all */
+    -ms-user-select: text;      /* IE 10+ */
+    user-select: text;          /* Likely future */ 
 }

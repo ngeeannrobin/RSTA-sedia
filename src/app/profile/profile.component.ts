@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   constructor(private auth:AuthService, private prof:ProfileService, private router:Router) { }
   userData: any = {};
   changeRankName: boolean = false;
+  copy: boolean = false;
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
         this.GetProfile(this.auth.uid);
@@ -48,6 +49,12 @@ export class ProfileComponent implements OnInit {
 
   HandleChange($event){
     this.changeRankName = $event;
+  }
+
+  Copy(){
+    navigator.clipboard.writeText(this.userData.uid).then(_=>{
+      this.copy = true;
+    })
   }
 
 }
