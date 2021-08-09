@@ -103,12 +103,7 @@ export class FirestoreService {
   }
 
   // PARADE STATE
-
-  GetPeople() {
-    return this.GetRequest(this.db.collection(`person`));
-  }
-
-  GetParadeStateHeading() {
+  GetParadeState() {
     return this.GetRequest(this.db.doc(`data/parade-state`))
   }
 

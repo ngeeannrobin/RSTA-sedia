@@ -1,12 +1,43 @@
-<div *ngIf="init">
-    <table>
-        <div *ngFor="let plt of ['0','1','2','3','4']">
-            {{title[plt]}} – [xx/{{paradeState.people[plt].length}}]
-            <tr *ngFor="let person of paradeState.people[plt]">
-                - {{person.cat}} {{person.name}}
-            </tr>
-            <br/>
-        </div>
+
+<nav-bar></nav-bar>
+<select-person *ngIf="open" [catFilter]="catFilter" (select)="Selected($event)"></select-person>
+<div *ngIf="init" class="container">
+
     
-    </table>
+    <div class="heading card">
+        <div style="font-weight: bold;">KEY PERSONNELS</div>
+        <div style="font-size: 0.85em;">
+            CDO: {{nom[paradeState.cdo]}} 
+            <i (click)="Edit(['3'],'cdo')" class="fa fa-pencil" aria-hidden="true"></i>
+        </div>
+        <div style="font-size: 0.85em;">
+            CDS: {{nom[paradeState.cds]}} 
+            <i (click)="Edit(['1'],'cds')" class="fa fa-pencil" aria-hidden="true"></i>
+        </div>
+        <div style="font-size: 0.85em;">
+            Duty PS: {{nom[paradeState.dps]}} 
+            <i (click)="Edit(['1'],'dps')" class="fa fa-pencil" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <!-- <div>RSTA COMPANY STRENGTH – {{paradeState.ps}}/{{paradeState.ts}}</div> -->
+    <!-- <div *ngFor="let plt of title">{{plt[1]}} – {{paradeState[plt[0]].ps}}/{{paradeState[plt[0]].ts}}</div> -->
+    
+    <div *ngFor="let plt of groups" class="plt-container card">
+        <div style="font-weight: bold;">{{plt[1]}} [{{paradeState[plt[0]].ps}}/{{paradeState[plt[0]].ts}}]</div>
+        <table style="font-size: 0.85em;">
+            <div *ngFor="let pid of paradeState[plt[0]].ppl">
+                <tr>
+                    <td rowspan="2" style="text-align: center;"> 
+                        <i class="fa fa-check" style="color:green" aria-hidden="true" *ngIf="!nicid.includes(pid)"></i>
+                        <i class="fa fa-times" style="color:red;" aria-hidden="true" *ngIf="nicid.includes(pid)"></i>
+                    </td>
+                    <td>{{nom[pid]}}</td>
+                </tr>
+                <tr *ngIf="nicid.includes(pid)" style="color: rgb(100,100,100); font-size: 0.8em;">
+                    <td>{{paradeState.nic[pid] || "REASON NOT PROVIDED"}}</td>
+                </tr>
+            </div>
+        </table>
+    </div>
 </div>

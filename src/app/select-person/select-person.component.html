@@ -1,0 +1,11 @@
+<div (click)="Close()" class="background">
+
+    
+
+    <div class="container">
+        <input [ngModel]="search" (ngModelChange)="InputChange($event)" class="searchbar" id="searchbar" placeholder="Search">
+        <div (click)="Select(key)" *ngFor="let key of displayKey" class="name">
+            {{nom[key]}}
+        </div>
+    </div>
+</div>
