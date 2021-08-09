@@ -39,6 +39,7 @@ export class SelectPersonComponent implements OnInit {
   }
 
   Select(key:string) {
+    this.Close();
     this.select.emit(key);
   }
 
