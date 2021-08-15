@@ -19,7 +19,7 @@
 }
 
 .temp-missing {
-    background-color:rgb(255, 175, 175);
+    background-color:rgb(255, 210, 210);
 }
 
 .edit-text {
@@ -27,6 +27,7 @@
     height: 8.75em;
     flex: 90%;
     margin-right: 1em;
+    font-size: 1.25em;
 }
 
 .doc-btn-container {
@@ -38,6 +39,7 @@
     padding: 0.25em;
     border-radius: 50%;
     margin-bottom: 0.25em;
+    max-width: 1.5em;
 }
 
 .action-container {
