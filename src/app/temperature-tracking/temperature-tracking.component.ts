@@ -25,6 +25,7 @@ export class TemperatureTrackingComponent implements OnInit {
     this.auth.Init(true).then(_=>{
       this.admin.GetTempData().then(data=>{
         this.displayData = data;
+        this.displayData.sort((a,b)=> (a.r.split(" ").join() >  b.r.split(" ").join())?1:-1)
       })
     })
   }

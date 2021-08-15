@@ -33,7 +33,7 @@ export class ParadeStateComponent implements OnInit {
   toChange:string;
 
   ngOnInit(): void {
-    this.auth.Init(false).then(_=>{
+    this.auth.Init(true).then(_=>{
       this.admin.GetParadeState().then(data=>{
         this.paradeState = data;
         this.nicid = Object.keys(this.paradeState.nic);
