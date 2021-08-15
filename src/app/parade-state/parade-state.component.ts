@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin.service';
 import { AuthService } from '../auth.service';
 import { ParadeStateService } from '../parade-state.service';
 
@@ -9,7 +10,7 @@ import { ParadeStateService } from '../parade-state.service';
 })
 export class ParadeStateComponent implements OnInit {
 
-  constructor(private auth: AuthService, private ps: ParadeStateService) { }
+  constructor(private auth: AuthService, private admin: AdminService) { }
   paradeState: any;
   init: boolean = false;
   groups: any[] = [
@@ -29,10 +30,10 @@ export class ParadeStateComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
-      this.ps.GetParadeState().then(data=>{
+      this.admin.GetParadeState().then(data=>{
         this.paradeState = data;
         this.nicid = Object.keys(this.paradeState.nic);
-        this.nom = this.ps.GetNom();        
+        this.nom = this.admin.GetNom();        
         this.init = true;
         console.log(this.paradeState)
       })

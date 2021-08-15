@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AdminService } from '../admin.service';
 import { ParadeStateService } from '../parade-state.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ParadeStateService } from '../parade-state.service';
 })
 export class SelectPersonComponent implements OnInit {
 
-  constructor(private ps: ParadeStateService) { }
+  constructor(private admin: AdminService) { }
   nom: any;
   nomKey: string[];
   displayKey: string[];
@@ -18,7 +19,7 @@ export class SelectPersonComponent implements OnInit {
   @Output() select: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
-    this.nom = this.ps.GetFilteredNom(this.catFilter);
+    this.nom = this.admin.GetFilteredNom(this.catFilter);
     this.nomKey = Object.keys(this.nom);
     this.InputChange("");
 
