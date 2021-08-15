@@ -40,6 +40,7 @@ import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
 import { ParadeStateComponent } from './parade-state/parade-state.component';
 import { SelectPersonComponent } from './select-person/select-person.component';
 import { TemperatureTrackingComponent } from './temperature-tracking/temperature-tracking.component';
+import { DecodeComponent } from './decode/decode.component';
 
 
 
@@ -64,7 +65,8 @@ import { TemperatureTrackingComponent } from './temperature-tracking/temperature
     MessageComponent,
     ParadeStateComponent,
     SelectPersonComponent,
-    TemperatureTrackingComponent
+    TemperatureTrackingComponent,
+    DecodeComponent
   ],
   imports: [
     AngularFireAuthModule,

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { BiboComponent } from './bibo/bibo.component';
 import { CodeComponent } from './code/code.component';
+import { DecodeComponent } from './decode/decode.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { ParadeStateComponent } from './parade-state/parade-state.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: "admin", component: AdminMenuComponent},
   {path: "parade-state", component: ParadeStateComponent},
   {path: "temperature", component: TemperatureTrackingComponent},
+  {path: "decode", component: DecodeComponent},
   {path: "code/:code", component: CodeComponent},
   {path: "", pathMatch: "full", redirectTo: "login"}
 ];

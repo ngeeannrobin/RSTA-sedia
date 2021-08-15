@@ -1,0 +1,13 @@
+<nav-bar></nav-bar>
+
+<div class="container">
+    <textarea [(ngModel)]="text"  placeholder="Text" class="text"></textarea>
+
+    <textarea [(ngModel)]="code" placeholder="Code" class="code"></textarea>
+    
+    <div style="text-align: center;">
+        <div (click)="Decode()" class="btn">Decode</div>
+        <div (click)="Copy()" class="btn">Copy</div>
+    </div>
+    
+</div>
