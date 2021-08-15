@@ -16,10 +16,13 @@ export class TemperatureTrackingComponent implements OnInit {
 
   displayData: any[] = [];
   selectNew: boolean = false;
+  code: string = "";
+  generatedText: string = "";
+  encodeURIComponent = encodeURIComponent;
 
   ngOnInit(): void {
     // change to true
-    this.auth.Init(true).then(_=>{
+    this.auth.Init(false).then(_=>{
       this.admin.GetTempData().then(data=>{
         this.displayData = data;
       })
@@ -113,7 +116,7 @@ export class TemperatureTrackingComponent implements OnInit {
 
   
 
-  CopyReport(){
+  GenerateReport(){
 
     let dt = new Date();
     let text = `*RSTA Company Temperature Taking on ${this.ConvertDateToTitle(dt)} at ${this.ClosestReportingTime(dt)}*`;
@@ -122,8 +125,12 @@ export class TemperatureTrackingComponent implements OnInit {
       const doc = this.displayData[i];
       text+=`\n\n${i+1}) ${this.admin.ConvertName(doc.name)}\n${doc.t||''}\n${doc.r}\n${doc.s}`;
     }
+    this.generatedText = this.admin.Decode(text,this.code);
+    this.code="";
+  }
 
-    navigator.clipboard.writeText(text).then(_=>{
+  Copy() {
+    navigator.clipboard.writeText(this.generatedText).then(_=>{
       alert("Text copied.");
     })
   }

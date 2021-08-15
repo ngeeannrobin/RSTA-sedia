@@ -3,11 +3,16 @@
 
 <div class="container">
     <div class="info card">
-        <div style="font-weight: bold;">Temperature tracking details</div>
+        <div style="font-weight: bold;">Temperature tracking action buttons</div>
         <div class="action-container">
             <div (click)="selectNew=true;" class="action">Add new person</div>
             <div (click)="ResetTemp()" class="action">Reset temperatures</div>
-            <div (click)="CopyReport()" class="action">Copy report</div>
+            <div>
+                <div (click)="GenerateReport()" class="action">Generate report</div>
+                <input [(ngModel)]="code" class="action" style="width: 50%;" placeholder="Key">
+            </div>
+            <div *ngIf="generatedText != ''" (click)="Copy()" class="action">Copy report</div>
+            <a *ngIf="generatedText != ''" class="action" href="https://wa.me?text={{encodeURIComponent(generatedText)}}" target=”_blank”>Send on WhatsApp</a>
         </div>
 
         <!-- <div></div> -->
