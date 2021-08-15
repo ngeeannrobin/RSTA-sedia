@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AdminService } from '../admin.service';
-import { ParadeStateService } from '../parade-state.service';
 
 @Component({
   selector: 'select-person',
@@ -17,9 +16,15 @@ export class SelectPersonComponent implements OnInit {
 
   @Input() catFilter: string[];
   @Output() select: EventEmitter<string> = new EventEmitter<string>();
+  @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnInit(): void {
-    this.nom = this.admin.GetFilteredNom(this.catFilter);
+    if (this.catFilter){
+      this.nom = this.admin.GetFilteredNom(this.catFilter);
+    } else {
+      this.nom = this.admin.GetNom();
+    }
+    
     this.nomKey = Object.keys(this.nom);
     this.InputChange("");
 
@@ -37,6 +42,7 @@ export class SelectPersonComponent implements OnInit {
     document.body.style.position = '';
     document.body.style.top = '';
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    this.cancel.emit();
   }
 
   Select(key:string) {

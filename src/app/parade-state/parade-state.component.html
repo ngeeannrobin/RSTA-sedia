@@ -1,6 +1,6 @@
 
 <nav-bar></nav-bar>
-<select-person *ngIf="open" [catFilter]="catFilter" (select)="Selected($event)"></select-person>
+<select-person *ngIf="open" [catFilter]="catFilter" (select)="Selected($event)" (cancel)="Cancel()"></select-person>
 <div *ngIf="init" class="container">
 
     
