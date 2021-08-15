@@ -1,1 +1,32 @@
-<p>temperature-tracking works!</p>
+<nav-bar></nav-bar>
+<select-person *ngIf="selectNew" (select)="Selected($event)" (cancel)="Cancel()"></select-person>
+
+<div class="container">
+    <div class="info card">
+        <div style="font-weight: bold;">Temperature tracking details</div>
+        <div class="action-container">
+            <div (click)="selectNew=true;" class="action">Add new person</div>
+            <div (click)="ResetTemp()" class="action">Reset temperatures</div>
+            <div (click)="CopyReport()" class="action">Copy report</div>
+        </div>
+
+        <!-- <div></div> -->
+    </div>
+    <div *ngFor="let doc of displayData" class="card" [ngClass]="{'temp': doc.t!==undefined, 'temp-missing': doc.t===undefined}">
+        <div style="font-weight: bold;">{{doc.name}}</div>
+        <div *ngIf="!doc.edit" (click)="Edit(doc)">
+            <div>{{doc.t||'-'}}</div>
+            <div>{{doc.r}}</div>
+            <div style="white-space: pre-wrap;">{{doc.s}}</div>
+        </div>
+        <div *ngIf="doc.edit">
+            <textarea class="edit-text" [(ngModel)]="doc.text"></textarea>
+            <div class="btn-container">
+                <div (click)="Delete(doc)" class="remove">Delete</div>
+                <div (click)="CancelEdit(doc)" class="cancel">Cancel</div>
+                <div (click)="Save(doc)" class="save">Save</div>
+            </div>
+
+        </div>
+    </div>
+</div>

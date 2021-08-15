@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -42,6 +43,24 @@ export class FirestoreService {
       })
     })
   }
+
+    // primary used for querys
+    GetRequestByRefWithId(ref): Promise<any>{
+      return new Promise((res,rej)=>{
+        ref.get().then(snapshot=>{
+          if (snapshot.empty) {
+            res({}); 
+          }
+          else {
+            let data = {};
+            snapshot.forEach(doc=>{
+              data[doc.id] = doc.data();
+            })
+            res(data);
+          }
+        })
+      })
+    }
 
   GetUser(uuid) {
     const ref = this.db.collection(`person`).ref
@@ -105,6 +124,23 @@ export class FirestoreService {
   // PARADE STATE
   GetParadeState() {
     return this.GetRequest(this.db.doc(`data/parade-state`))
+  }
+
+  // TEMPERATURE TRACKING
+  GetTempData() {
+    return this.GetRequestByRefWithId(this.db.collection(`temp-tracking`).ref)
+  }
+
+  UpdateTemp(id,doc) {
+    return this.db.doc(`temp-tracking/${id}`).set(doc);
+  }
+
+  ResetTemp(id) {
+    return this.db.doc(`temp-tracking/${id}`).update({t: firebase.firestore.FieldValue.delete()})
+  }
+
+  DeleteTemp(id) {
+    return this.db.doc(`temp-tracking/${id}`).delete();
   }
 
 }
