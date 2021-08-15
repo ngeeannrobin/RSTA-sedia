@@ -39,6 +39,7 @@ import { MessageComponent } from './message/message.component';
 import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
 import { ParadeStateComponent } from './parade-state/parade-state.component';
 import { SelectPersonComponent } from './select-person/select-person.component';
+import { TemperatureTrackingComponent } from './temperature-tracking/temperature-tracking.component';
 
 
 
@@ -62,7 +63,8 @@ import { SelectPersonComponent } from './select-person/select-person.component';
     ChangeDateComponent,
     MessageComponent,
     ParadeStateComponent,
-    SelectPersonComponent
+    SelectPersonComponent,
+    TemperatureTrackingComponent
   ],
   imports: [
     AngularFireAuthModule,

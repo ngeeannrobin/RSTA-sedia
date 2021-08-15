@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ParadeStateComponent } from './parade-state/parade-state.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
+import { TemperatureTrackingComponent } from './temperature-tracking/temperature-tracking.component';
 import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: "qr", component: QrcodeComponent},
   {path: "admin", component: AdminMenuComponent},
   {path: "parade-state", component: ParadeStateComponent},
+  {path: "temperature", component: TemperatureTrackingComponent},
   {path: "code/:code", component: CodeComponent},
   {path: "", pathMatch: "full", redirectTo: "login"}
 ];

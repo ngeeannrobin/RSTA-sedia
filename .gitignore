@@ -40,6 +40,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/src/app/admin.service.spec.ts
+/src/app/admin.service.ts
 /src/app/parade-state.service.spec.ts
 /src/app/parade-state.service.ts
 
