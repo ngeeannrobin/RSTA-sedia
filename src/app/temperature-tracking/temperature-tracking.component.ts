@@ -84,7 +84,11 @@ export class TemperatureTrackingComponent implements OnInit {
   }
 
   ResetTemp(){
-    this.admin.ResetTemp(this.displayData);
+    this.admin.ResetTemp(this.displayData).then(_=>{
+      this.displayData.forEach(doc=>{
+        delete doc.t;
+      })
+    })
   }
 
   Update(doc){
