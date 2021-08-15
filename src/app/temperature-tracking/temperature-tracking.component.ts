@@ -22,7 +22,6 @@ export class TemperatureTrackingComponent implements OnInit {
     this.auth.Init(true).then(_=>{
       this.admin.GetTempData().then(data=>{
         this.displayData = data;
-        console.log(data);
       })
     })
   }
@@ -120,7 +119,9 @@ export class TemperatureTrackingComponent implements OnInit {
       text+=`\n\n${i+1}) ${this.admin.ConvertName(doc.name)}\n${doc.t||''}\n${doc.r}\n${doc.s}`;
     }
 
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(text).then(_=>{
+      alert("Text copied.");
+    })
   }
 
   Delete(doc){
