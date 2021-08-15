@@ -24,12 +24,25 @@
             <div>{{doc.r}}</div>
             <div style="white-space: pre-wrap;">{{doc.s}}</div>
         </div>
-        <div *ngIf="doc.edit">
+        <div *ngIf="doc.edit" style="display: flex;">
             <textarea class="edit-text" [(ngModel)]="doc.text"></textarea>
-            <div class="btn-container">
-                <div (click)="Delete(doc)" class="remove">Delete</div>
-                <div (click)="CancelEdit(doc)" class="cancel">Cancel</div>
-                <div (click)="Save(doc)" class="save">Save</div>
+            <div class="doc-btn-container">
+                <div (click)="Save(doc)" class="doc-btn" style="background-color: #81c784;">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div (click)="CancelEdit(doc)" class="doc-btn" style="background-color: #a6d4fa;">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div (click)="doc.text=''" class="doc-btn" style="background-color: #a6d4fa;">
+                    <i class="fa fa-eraser" aria-hidden="true"></i>
+                </div>
+                <div (click)="Delete(doc)" class="doc-btn" style="background-color: #e57373">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+
+
+
+                
             </div>
 
         </div>

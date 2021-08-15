@@ -22,7 +22,7 @@ export class TemperatureTrackingComponent implements OnInit {
 
   ngOnInit(): void {
     // change to true
-    this.auth.Init(false).then(_=>{
+    this.auth.Init(true).then(_=>{
       this.admin.GetTempData().then(data=>{
         this.displayData = data;
       })
