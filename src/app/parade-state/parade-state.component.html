@@ -2,9 +2,16 @@
 <nav-bar></nav-bar>
 <select-person *ngIf="open" [catFilter]="catFilter" (select)="Selected($event)" (cancel)="Cancel()"></select-person>
 <div *ngIf="init" class="container">
+    <div class="info card">
+        <div style="font-weight: bold;">Parade state action buttons</div>
+        <div style="margin-top: 0.5em;">
+            <div class="action">Add status</div>
+        </div>
 
+        <!-- <div></div> -->
+    </div>
     
-    <div class="heading card">
+    <div class="card">
         <div style="font-weight: bold;">KEY PERSONNELS</div>
         <div style="font-size: 0.85em;">
             CDO: {{nom[paradeState.cdo]}} 
@@ -20,10 +27,8 @@
         </div>
     </div>
 
-    <!-- <div>RSTA COMPANY STRENGTH – {{paradeState.ps}}/{{paradeState.ts}}</div> -->
-    <!-- <div *ngFor="let plt of title">{{plt[1]}} – {{paradeState[plt[0]].ps}}/{{paradeState[plt[0]].ts}}</div> -->
     
-    <div *ngFor="let plt of groups" class="plt-container card">
+    <div *ngFor="let plt of groups" class="card">
         <div style="font-weight: bold;">{{plt[1]}} [{{paradeState[plt[0]].ps}}/{{paradeState[plt[0]].ts}}]</div>
         <table style="font-size: 0.85em;">
             <div *ngFor="let pid of paradeState[plt[0]].ppl">
@@ -34,10 +39,26 @@
                     </td>
                     <td>{{nom[pid]}}</td>
                 </tr>
-                <tr *ngIf="nicid.includes(pid)" style="color: rgb(100,100,100); font-size: 0.8em;">
+                <tr *ngIf="show.reason && nicid.includes(pid)" style="color: rgb(100,100,100); font-size: 0.8em;">
                     <td>{{paradeState.nic[pid] || "REASON NOT PROVIDED"}}</td>
                 </tr>
+                <tr *ngIf="show.status && stsid.includes(pid)">
+                    <div *ngFor="let sts of paradeState.sts[pid]" style="color: rgb(100,100,100); font-size: 0.8em;">
+                        <td>- {{sts.t}} ({{ConvertTimestampToDate(sts.s)}} - {{ConvertTimestampToDate(sts.e)}})</td>
+                    </div>
+                </tr>
+
             </div>
         </table>
     </div>
+</div>
+
+<div class="side-action-btn-container">
+    <div (click)="show.reason = !show.reason" class="side-action-btn" [ngClass]="{'active':show.reason,'not-active':!show.reason}">
+        <i class="fa fa-bed fa-lg" aria-hidden="true"></i>
+    </div>
+    <div (click)="show.status = !show.status" class="side-action-btn" [ngClass]="{'active':show.status,'not-active':!show.status}">
+        <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
+    </div>
+    
 </div>

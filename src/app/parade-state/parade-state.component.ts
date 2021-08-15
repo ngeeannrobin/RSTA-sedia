@@ -19,19 +19,25 @@ export class ParadeStateComponent implements OnInit {
     ["plt3", "PLATOON 3"],
     ["plt4", "PLATOON 4"]
   ];
-  nicid: string[];
+  nicid: string[] = [];
+  stsid: string[];
   nom: any;
   open:boolean = false;
   catFilter: string[];
+  show:any = {
+    reason: true,
+    status: false
+  };
 
   // path to thing to change lol
   toChange:string;
 
   ngOnInit(): void {
-    this.auth.Init(true).then(_=>{
+    this.auth.Init(false).then(_=>{
       this.admin.GetParadeState().then(data=>{
         this.paradeState = data;
         this.nicid = Object.keys(this.paradeState.nic);
+        this.stsid = Object.keys(this.paradeState.sts);
         this.nom = this.admin.GetNom();        
         this.init = true;
         console.log(this.paradeState)
@@ -53,5 +59,10 @@ export class ParadeStateComponent implements OnInit {
 
   Cancel() {
     this.open = false;
+  }
+
+  ConvertTimestampToDate(ts){
+    const dt = new Date(ts.seconds*1000);
+    return `${dt.getDate().toString().padStart(2,"0")}${(dt.getMonth() + 1).toString().padStart(2,"0")}${dt.getFullYear().toString().substr(2,2)}`
   }
 }
