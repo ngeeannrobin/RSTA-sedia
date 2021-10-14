@@ -40,6 +40,7 @@ import { ParadeStateComponent } from './parade-state/parade-state.component';
 import { SelectPersonComponent } from './select-person/select-person.component';
 import { TemperatureTrackingComponent } from './temperature-tracking/temperature-tracking.component';
 import { AdminBiboComponent } from './admin-bibo/admin-bibo.component';
+import { SelectPltComponent } from './select-plt/select-plt.component';
 
 
 
@@ -64,7 +65,8 @@ import { AdminBiboComponent } from './admin-bibo/admin-bibo.component';
     ParadeStateComponent,
     SelectPersonComponent,
     TemperatureTrackingComponent,
-    AdminBiboComponent
+    AdminBiboComponent,
+    SelectPltComponent
   ],
   imports: [
     AngularFireAuthModule,
