@@ -33,14 +33,13 @@ import { LoginEmailComponent } from './login-email/login-email.component';
 import { BiboInputCodeComponent } from './bibo-input-code/bibo-input-code.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
-import { CodeComponent } from './code/code.component';
 import { ChangeDateComponent } from './change-date/change-date.component';
 import { MessageComponent } from './message/message.component';
 import { ViewCoyBiboComponent } from './view-coy-bibo/view-coy-bibo.component';
 import { ParadeStateComponent } from './parade-state/parade-state.component';
 import { SelectPersonComponent } from './select-person/select-person.component';
 import { TemperatureTrackingComponent } from './temperature-tracking/temperature-tracking.component';
-import { DecodeComponent } from './decode/decode.component';
+import { AdminBiboComponent } from './admin-bibo/admin-bibo.component';
 
 
 
@@ -59,14 +58,13 @@ import { DecodeComponent } from './decode/decode.component';
     BiboInputCodeComponent,
     NavBarComponent,
     AdminMenuComponent,
-    CodeComponent,
     ViewCoyBiboComponent,
     ChangeDateComponent,
     MessageComponent,
     ParadeStateComponent,
     SelectPersonComponent,
     TemperatureTrackingComponent,
-    DecodeComponent
+    AdminBiboComponent
   ],
   imports: [
     AngularFireAuthModule,
