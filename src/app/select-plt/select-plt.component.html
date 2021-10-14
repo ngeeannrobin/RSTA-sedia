@@ -1,0 +1,24 @@
+<div  class="select-plt-container">
+    <div class="select-plt-title">
+        Select platoon
+    </div>
+
+    <div class="select-plt-icon-container">
+        <diV (click)="SelectPlt(i)" *ngFor="let p of plts; let i = index" class="plt-container">
+            <img [src]="'/../assets/plt/'+p[1]" class="plt-icon" [ngClass]="{'not-selected':plt!==i}">
+            <div class="plt-txt">{{p[0]}}</div>
+        </diV>
+    </div>
+
+    <div class="select-btn-container">
+        <div (click)="Finalise()" *ngIf="plt!==undefined" class="select-btn">
+            Select >>>
+        </div>
+        <div *ngIf="plt===undefined" class="select-btn" style="opacity: 0;">
+            Select >>>
+        </div>
+    </div>
+
+    
+
+</div>
