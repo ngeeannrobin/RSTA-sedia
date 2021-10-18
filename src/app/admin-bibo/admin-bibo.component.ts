@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AdminService } from '../admin.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-admin-bibo',
@@ -9,7 +10,7 @@ import { AdminService } from '../admin.service';
 })
 export class AdminBiboComponent implements OnInit {
 
-  constructor(private admin:AdminService) { }
+  constructor(private admin:AdminService, private auth:AuthService) { }
   
   selectedPlt: Number;
   bookIn: Number = -1;
@@ -44,10 +45,14 @@ export class AdminBiboComponent implements OnInit {
   sub: Subscription;
 
   ngOnInit(): void {
+    this.auth.Init(true);
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub!==undefined){
+      this.sub.unsubscribe();
+    }
+    
   }
 
   SelectPlatoon($event){
