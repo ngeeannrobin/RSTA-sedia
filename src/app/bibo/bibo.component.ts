@@ -21,7 +21,7 @@ export class BiboComponent implements OnInit {
   distanceStr: string = "xxx";
   checking: boolean = true;
   loading: boolean = false;
-  useCamera: boolean = true;
+  useCamera: boolean = false;
   showlocation: number = 1;
   permission: any = {
     geolocation: true,
