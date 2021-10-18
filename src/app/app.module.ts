@@ -41,6 +41,7 @@ import { SelectPersonComponent } from './select-person/select-person.component';
 import { TemperatureTrackingComponent } from './temperature-tracking/temperature-tracking.component';
 import { AdminBiboComponent } from './admin-bibo/admin-bibo.component';
 import { SelectPltComponent } from './select-plt/select-plt.component';
+import { CodeComponent } from './code/code.component';
 
 
 
@@ -66,7 +67,8 @@ import { SelectPltComponent } from './select-plt/select-plt.component';
     SelectPersonComponent,
     TemperatureTrackingComponent,
     AdminBiboComponent,
-    SelectPltComponent
+    SelectPltComponent,
+    CodeComponent
   ],
   imports: [
     AngularFireAuthModule,

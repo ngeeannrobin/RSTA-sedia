@@ -101,14 +101,13 @@ export class AdminBiboComponent implements OnInit {
   }
 
   scanSuccessHandler($event) {
-
-
-
-
+    const code = $event.replace("rsta-sedia.web.app/c/","")
+    console.log(code);
     for (let i = 0; i < this.pltData.length; i++) {
       const personData = this.pltData[i];
       
-      if (personData[0]===$event){
+      if (personData[0]===code){
+        console.log(personData,this.moJi);
         if (personData[2] === this.moJi || personData[2] === this.loadingEmoji){
           break;
         } else if (this.bookIn===1) {

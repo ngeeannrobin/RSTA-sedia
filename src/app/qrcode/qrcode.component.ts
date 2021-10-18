@@ -52,7 +52,7 @@ export class QrcodeComponent implements OnInit {
 
   HandleCode(code:string){
     this.code = code;
-    this.url = `rsta-sedia.web.app/code/${code}`;
+    this.url = `rsta-sedia.web.app/c/${code}`;
   }
 
   async CountDown(){

@@ -147,7 +147,7 @@ export class BiboComponent implements OnInit {
   qrstring($event: string){
     this.scan = false;
     this.msg = "Loading...";
-    this.Book(this.bookingIn,$event.replace("rsta-sedia.web.app/code/",""));
+    this.Book(this.bookingIn,$event.replace("rsta-sedia.web.app/c/",""));
   }
 
   error($event: string){

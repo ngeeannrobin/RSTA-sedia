@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminBiboComponent } from './admin-bibo/admin-bibo.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { BiboComponent } from './bibo/bibo.component';
+import { CodeComponent } from './code/code.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { ParadeStateComponent } from './parade-state/parade-state.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: "parade-state", component: ParadeStateComponent},
   {path: "temperature", component: TemperatureTrackingComponent},
   {path: "admin-bibo", component: AdminBiboComponent},
+  {path: "c/:code", component: CodeComponent},
   {path: "", pathMatch: "full", redirectTo: "login"}
 ];
 
