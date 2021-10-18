@@ -123,7 +123,7 @@ export class FirestoreService {
 
   // PARADE STATE
   GetParadeState() {
-    return this.GetRequest(this.db.doc(`data/parade-state`))
+    return this.GetRequest(this.db.doc(`data/parade-state`));
   }
 
   // TEMPERATURE TRACKING
@@ -141,6 +141,36 @@ export class FirestoreService {
 
   DeleteTemp(id) {
     return this.db.doc(`temp-tracking/${id}`).delete();
+  }
+  
+  // BIBO
+
+  GetPlatoonNic(plt: string){
+    return this.GetRequestObservable(this.db.doc(`data/PS${plt}_nic`));
+  }
+
+  AddBiboRecord(bin: boolean, name: string, date: Date){
+    const col = this.db.collection("rec");
+    return col.add({in: bin, name: name, time: date});
+  }
+
+  UpdateParadeState(path,pid,data){
+    const doc = this.db.doc(`data/${path}`);
+    let obj = {};
+    obj[pid] = data||firebase.firestore.FieldValue.delete();
+    return doc.update(obj);
+  }
+
+  UpdateLastBIBO(pid, bin, date, reason){
+    const doc = this.db.doc(`person/${pid}`);
+    let obj = {};
+    if (!bin){
+      obj['reason'] = reason;
+      obj['lastBookOut'] = date;
+    } else {
+      obj['lastBookIn'] = date;
+    }
+    return doc.update(obj);
   }
 
 }

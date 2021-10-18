@@ -1,0 +1,122 @@
+.select-bibo-container {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%; top:50%;
+    text-align: center;
+}
+
+.select-bibo-btn {
+    font-weight: bold;
+    font-size: 2em;
+    padding: 1em;
+    background-color: gray;
+    width: 50vw;
+    border-radius: 5px;
+}
+
+.select-bibo-icn {
+    font-size: 3em;
+    margin: 0.5em 0;
+}
+
+.select-bibo-selected {
+    background-color: #49CD9B;
+    color: black;
+}
+
+.flip {
+    animation: aflip 500ms forwards;
+}
+.unflip {
+    animation: aunflip 500ms forwards;
+}
+
+@keyframes aflip {
+    from {
+        transform: rotateZ(0);
+        
+    }
+    to {
+        transform: rotateZ(-180deg);
+    }
+}
+
+@keyframes aunflip {
+    from {
+        transform: rotateZ(180deg);
+        
+    }
+    to {
+        transform: rotateZ(0);
+    }
+}
+
+.select-reason-container {
+    padding: 1em;
+    margin-top: 3em;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25em;
+    margin-bottom: 1em;
+}
+
+.selected-reason {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.reason-btn {
+    margin: 0.5em;
+}
+
+.reason-remark-container {
+    margin-top: 1em;
+}
+
+.reason-remark-input {
+    width: 100%;
+    height: 2em;
+}
+
+.check-container {
+    margin-top: 1em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.display-plt {
+    
+    font-size: 0.8em;
+    overflow-y: scroll;
+    height: 50vh;
+    border: 1px solid white;
+    padding: 0.5em;
+    margin: 1em;
+    margin-bottom: 0.25em;
+}
+
+.strength {
+    text-align: right;
+    margin-right: 1em;
+}
+
+:host zxing-scanner::ng-deep video {
+    height: min(50vw,50vh);
+    width: min(50vw,50vh);  
+    /* object-fit: contain; */
+}
+:host zxing-scanner::ng-deep {
+    height: min(50vw,50vh);
+    width: min(50vw,50vh);
+    border: solid white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    /* position: absolute; */
+    /* left: 50%; top: 10%; */
+    /* transform: translateX(-50%); */
+} 

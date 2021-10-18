@@ -1,1 +1,50 @@
-<select-plt (final)="SelectedPlatoon($event)" *ngIf=""></select-plt>
+<nav-bar></nav-bar>
+<select-plt (final)="SelectPlatoon($event)" *ngIf="selectedPlt===undefined"></select-plt>
+
+<div *ngIf="selectedPlt!==undefined && bookIn===-1" class="select-bibo-container">
+    <div (click)="SelectBookIn(true)" class="select-bibo-btn" [ngClass]="{'select-bibo-selected': temp.bookIn}">
+        Book In
+    </div>
+    <div class="select-bibo-icn" [ngClass]="{'flip': !temp.bookIn,'unflip': temp.bookIn}">
+        <i (click)="SelectBookIn(!temp.bookIn)" class="fa fa-arrow-up" aria-hidden="true"></i>
+    </div>
+    <div (click)="SelectBookIn(false)" class="select-bibo-btn" [ngClass]="{'select-bibo-selected': !temp.bookIn}">
+        Book Out
+    </div>
+    <div class="select-bibo-icn">
+        <i (click)="FinaliseSelectBookIn()" class="fa fa-check" aria-hidden="true"></i>
+    </div>
+</div>
+
+<div *ngIf="selectedPlt!==undefined && bookIn===0 && reason.code===undefined" class="select-reason-container">
+    <div class="title">
+        Select reason for booking out
+    </div>
+    <div (click)="SelectReason(reason[0])" *ngFor="let reason of bookOutReasons" class="reason-btn" [ngClass]="{'selected-reason': reason[0]===temp.reason.code}">
+        {{reason[1]}} {{reason[0]===temp.reason.code?"👈":""}}
+    </div>
+    <div class="reason-remark-container">
+        Remarks
+        <input [(ngModel)]="temp.reason.remark"placeholder="Remarks (date, location, etc.)" class="reason-remark-input">
+    </div>
+    
+    <div class="check-container">
+        <span (click)="FinaliseSelectReason()">Continue >>></span>
+    </div>
+</div>
+
+<div *ngIf="selectedPlt!==undefined && bookIn!==-1 &&  reason.code!==undefined">
+    <span style="position: absolute; top: 1em; right: 1em;">{{moJi}}</span>
+    <div>
+        <zxing-scanner #scanner [formats]="['QR_CODE']" (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
+        <!-- <zxing-scanner #scanner (scanSuccess)="scanSuccessHandler($event)" [formats]="['QR_CODE']" (camerasNotFound)="camNotFound($event)" (scanError)="error($event)"></zxing-scanner> -->
+    </div>
+    <div class="display-plt">
+        <div *ngFor="let p of pltData">
+            {{p[2]}} {{p[1]}}
+        </div>
+    </div>
+    <div class="strength">
+        Total strength: {{strength}}/{{pltData.length}}
+    </div>
+</div>

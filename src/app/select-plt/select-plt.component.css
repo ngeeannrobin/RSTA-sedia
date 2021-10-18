@@ -8,7 +8,7 @@
 
 .select-plt-title {
     text-align: center;
-    font-size: 2em;
+    font-size: min(2em,7.5vh, 10vw);
     font-weight: bold;
 }
 
@@ -27,8 +27,10 @@
 }
 
 .plt-icon {
-    width: 90%;
-    max-width: 200px;
+    width: auto;
+    height: auto;
+    max-width: min(90%,200px);
+    max-height: 20vh;
     border: 5px solid #49CD9B;
 }
 
@@ -47,10 +49,10 @@
     display: inline;
     font-weight: bold;
     font-size: 1.5em;
-    margin-top: 50px;
+
 }
 
 .select-btn-container {
     text-align: center;
-    padding: 1.5em;
+    padding: min(5vh,1.5em);
 }
