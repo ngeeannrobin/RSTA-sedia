@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,13 +9,14 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private location: Location) { }
   @Input() darkMode: boolean = false;
   ngOnInit(): void {
   }
 
   back() {
-    this.router.navigate([".."]);
+    this.location.back();
+    // this.router.navigate([".."]);
   }
 
 }
