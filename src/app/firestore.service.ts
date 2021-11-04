@@ -145,7 +145,7 @@ export class FirestoreService {
   
   // BIBO
 
-  GetPlatoonNic(plt: string){
+  GetPlatoonNic(plt){
     return this.GetRequestObservable(this.db.doc(`data/PS${plt}_nic`));
   }
 

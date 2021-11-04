@@ -7,31 +7,36 @@
         <div style="margin-top: 0.5em;">
             <div class="action">Add status</div>
         </div>
-
-        <!-- <div></div> -->
     </div>
     
     <div class="card">
         <div style="font-weight: bold;">KEY PERSONNELS</div>
         <div style="font-size: 0.85em;">
-            CDO: {{nom[paradeState.cdo]}} 
+            <!-- CDO: {{nom[paradeState.cdo]}} -->
+            CDO: placeholder 
             <i (click)="Edit(['3'],'cdo')" class="fa fa-pencil" aria-hidden="true"></i>
         </div>
         <div style="font-size: 0.85em;">
-            CDS: {{nom[paradeState.cds]}} 
+            <!-- CDS: {{nom[paradeState.cds]}}  -->
+            CDS: placeholder
             <i (click)="Edit(['1'],'cds')" class="fa fa-pencil" aria-hidden="true"></i>
         </div>
         <div style="font-size: 0.85em;">
-            Duty PS: {{nom[paradeState.dps]}} 
+            <!-- Duty PS: {{nom[paradeState.dps]}}  -->
+            Duty PS: placeholder
             <i (click)="Edit(['1'],'dps')" class="fa fa-pencil" aria-hidden="true"></i>
         </div>
     </div>
 
     
-    <div *ngFor="let plt of groups" class="card">
-        <div style="font-weight: bold;">{{plt[1]}} [{{paradeState[plt[0]].ps}}/{{paradeState[plt[0]].ts}}]</div>
+    <div *ngFor="let plt of paradeState.plt" class="card">
+        <div style="font-weight: bold;">{{plt.label}} [{{plt.ps}}/{{plt.ts}}]</div>
         <table style="font-size: 0.85em;">
-            <div *ngFor="let pid of paradeState[plt[0]].ppl">
+            <div *ngFor="let pid of plt.ppl">
+                {{nom[pid]}} {{plt.bibo[pid].e}}
+            </div>
+            
+            <!-- <div *ngFor="let pid of paradeState[plt[0]].ppl">
                 <tr>
                     <td rowspan="2" style="text-align: center;"> 
                         <i class="fa fa-check" style="color:green" aria-hidden="true" *ngIf="!nicid.includes(pid)"></i>
@@ -48,7 +53,7 @@
                     </div>
                 </tr>
 
-            </div>
+            </div> -->
         </table>
     </div>
 </div>

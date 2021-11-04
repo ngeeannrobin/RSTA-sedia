@@ -22,6 +22,7 @@ export class AdminBiboComponent implements OnInit {
     }
   };
   pltData: Array<any> = [];
+  nom: any;
 
   // [CODE, DISPLAY TEXT]
   bookOutReasons: Array<Array<string>> = [
@@ -46,6 +47,7 @@ export class AdminBiboComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.Init(true);
+    this.nom = this.admin.GetNom();
   }
 
   ngOnDestroy(): void {
