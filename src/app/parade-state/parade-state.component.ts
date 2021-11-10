@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { AuthService } from '../auth.service';
 
@@ -9,7 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class ParadeStateComponent implements OnInit {
 
-  constructor(private auth: AuthService, private admin: AdminService) { }
+  constructor(private auth: AuthService, private admin: AdminService, private router: Router) { }
   paradeState: any;
   init: boolean = false;
   nicid: string[] = [];
@@ -21,6 +22,9 @@ export class ParadeStateComponent implements OnInit {
     reason: true,
     status: false
   };
+  code:string = "";
+  psCode = this.admin.paradeStateCode;
+  psCodeOrder = ["TT","PS","SO","OF","LV","MC","AT","CS","XX","GD","BO"];
 
   ngOnInit(): void {
     // this.auth.Init(true).then(_=>{
@@ -30,29 +34,7 @@ export class ParadeStateComponent implements OnInit {
         this.nom = this.admin.GetNom();
         this.init = true;
       })
-      
-      //.then(data=>{
-        // this.paradeState = data;
-        // this.nicid = Object.keys(this.paradeState.nic);
-        // this.stsid = Object.keys(this.paradeState.sts);
-        // this.nom = this.admin.GetNom();        
-        // this.init = true;
-        // console.log(this.paradeState)
-      //})
-    // })
   }
-
-  // Edit(catFilter: string[], toChange: string){
-  //   this.catFilter = catFilter;
-  //   this.toChange = toChange;
-  //   this.open = true;
-  // }
-
-  // Selected($event) {
-  //   console.log($event);
-  //   this.open = false;
-  //   this.paradeState[this.toChange] = $event;
-  // }
 
   Cancel() {
     this.open = false;
@@ -61,5 +43,39 @@ export class ParadeStateComponent implements OnInit {
   ConvertTimestampToDate(ts){
     const dt = new Date(ts.seconds*1000);
     return `${dt.getDate().toString().padStart(2,"0")}${(dt.getMonth() + 1).toString().padStart(2,"0")}${dt.getFullYear().toString().substr(2,2)}`
+  }
+
+  GenerateAndSend(){
+    // HEADING
+    let dt = new Date();
+    let text = `*ISR*\n`;
+    text += `DATE: ${dt.getDate()} ${["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"][dt.getMonth()]} ${dt.getFullYear()}\n`;
+    text += `\nCDO:\nCDS\nDUTY PS:\n\n--------------------------------\n\n`;
+
+    // STRENGTH
+    this.psCodeOrder.forEach(code=>{
+      text+= `${this.psCode[code].e} ${this.psCode[code].l}: ${this.paradeState.strength[code].toString().padStart(2,'0')}\n`;
+    })
+    text += `\n--------------------------------\n\n`
+
+    // PLATOON LEVEL STRENGTH
+    this.paradeState.plt.forEach(plt => {
+      text += `*${plt.label} [${plt.strength.PS}/${plt.strength.TT}]*\n`;
+      plt.ppl.forEach(pid=>{
+        text += `${this.admin.ConvertName(this.nom[pid])} ${plt.bibo[pid].e}${plt.bibo[pid].r===undefined?"":`(${plt.bibo[pid].r})`}\n`;
+      })
+      text += "\n";
+    });
+
+    // STATUS
+    text+=`--------------------------------\n\nSTATUSES`
+
+    // DECODE
+    text = this.admin.Decode(text,this.code);
+    
+    // SEND
+    // window.location.assign(`https://wa.me?text=${encodeURIComponent(text)}`);
+    
+    console.log(text);
   }
 }

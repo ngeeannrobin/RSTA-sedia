@@ -6,6 +6,8 @@
         <div style="font-weight: bold;">Parade state action buttons</div>
         <div style="margin-top: 0.5em;">
             <div class="action">Add status</div>
+            <div (click)="GenerateAndSend()" class="action">Decode & Send</div>
+            <input [(ngModel)]="code" class="action" style="width: 50%;" placeholder="Key">
         </div>
     </div>
     
@@ -27,33 +29,22 @@
             <!-- <i (click)="Edit(['1'],'dps')" class="fa fa-pencil" aria-hidden="true"></i> -->
         </div>
     </div>
+    
+    <div class="card">
+        <div style="font-weight: bold;">GENERAL OVERVIEW</div>
+        <div *ngFor="let code of psCodeOrder">
+            {{psCode[code].e}} {{psCode[code].l}}: {{paradeState.strength[code]}}
+        </div>
+    </div>
 
     
     <div *ngFor="let plt of paradeState.plt" class="card">
-        <div style="font-weight: bold;">{{plt.label}} [{{plt.ps}}/{{plt.ts}}]</div>
+        <div style="font-weight: bold;">{{plt.label}} [{{plt.strength.PS}}/{{plt.strength.TT}}]</div>
         <table style="font-size: 0.85em;">
             <div *ngFor="let pid of plt.ppl">
-                {{nom[pid]}} {{plt.bibo[pid].e}}
+                <span>{{nom[pid]}} {{plt.bibo[pid].e}}</span>
+                <span *ngIf="plt.bibo[pid].r !== undefined">({{plt.bibo[pid].r}})</span>
             </div>
-            
-            <!-- <div *ngFor="let pid of paradeState[plt[0]].ppl">
-                <tr>
-                    <td rowspan="2" style="text-align: center;"> 
-                        <i class="fa fa-check" style="color:green" aria-hidden="true" *ngIf="!nicid.includes(pid)"></i>
-                        <i class="fa fa-times" style="color:red;" aria-hidden="true" *ngIf="nicid.includes(pid)"></i>
-                    </td>
-                    <td>{{nom[pid]}}</td>
-                </tr>
-                <tr *ngIf="show.reason && nicid.includes(pid)" style="color: rgb(100,100,100); font-size: 0.8em;">
-                    <td>{{paradeState.nic[pid] || "REASON NOT PROVIDED"}}</td>
-                </tr>
-                <tr *ngIf="show.status && stsid.includes(pid)">
-                    <div *ngFor="let sts of paradeState.sts[pid]" style="color: rgb(100,100,100); font-size: 0.8em;">
-                        <td>- {{sts.t}} ({{ConvertTimestampToDate(sts.s)}} - {{ConvertTimestampToDate(sts.e)}})</td>
-                    </div>
-                </tr>
-
-            </div> -->
         </table>
     </div>
 </div>
@@ -65,5 +56,4 @@
     <div (click)="show.status = !show.status" class="side-action-btn" [ngClass]="{'active':show.status,'not-active':!show.status}">
         <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
     </div>
-    
 </div>
