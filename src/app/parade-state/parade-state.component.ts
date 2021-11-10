@@ -74,7 +74,7 @@ export class ParadeStateComponent implements OnInit {
     text = this.admin.Decode(text,this.code);
     
     // SEND
-    // window.location.assign(`https://wa.me?text=${encodeURIComponent(text)}`);
+    window.location.assign(`https://wa.me?text=${encodeURIComponent(text)}`);
     
     console.log(text);
   }

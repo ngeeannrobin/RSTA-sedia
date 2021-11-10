@@ -32,7 +32,7 @@
     
     <div class="card">
         <div style="font-weight: bold;">GENERAL OVERVIEW</div>
-        <div *ngFor="let code of psCodeOrder">
+        <div *ngFor="let code of psCodeOrder" style="font-size: 0.85em;">
             {{psCode[code].e}} {{psCode[code].l}}: {{paradeState.strength[code]}}
         </div>
     </div>
