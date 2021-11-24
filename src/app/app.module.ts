@@ -42,6 +42,7 @@ import { TemperatureTrackingComponent } from './temperature-tracking/temperature
 import { AdminBiboComponent } from './admin-bibo/admin-bibo.component';
 import { SelectPltComponent } from './select-plt/select-plt.component';
 import { CodeComponent } from './code/code.component';
+import { ELanyardComponent } from './e-lanyard/e-lanyard.component';
 
 
 
@@ -68,7 +69,8 @@ import { CodeComponent } from './code/code.component';
     TemperatureTrackingComponent,
     AdminBiboComponent,
     SelectPltComponent,
-    CodeComponent
+    CodeComponent,
+    ELanyardComponent
   ],
   imports: [
     AngularFireAuthModule,

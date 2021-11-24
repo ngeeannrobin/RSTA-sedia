@@ -1,0 +1,6 @@
+<nav-bar></nav-bar>
+<div class="qr-container">
+    <div class="name">{{data.name}}</div>
+    <qrcode *ngIf="code" [qrdata]="url" [width]="512" [errorCorrectionLevel]="'Q'" [elementType]="'img'"></qrcode>
+    <div class="time">{{time}}</div>
+</div>

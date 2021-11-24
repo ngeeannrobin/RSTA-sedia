@@ -65,7 +65,7 @@ export class FirestoreService {
   GetUser(uuid) {
     const ref = this.db.collection(`person`).ref
     .where('uid','==',uuid);
-    return this.GetRequestByRef(ref);
+    return ref.get();
   }
 
   UpdateUser(uuid,name){
@@ -124,6 +124,13 @@ export class FirestoreService {
   // PARADE STATE
   GetParadeState() {
     return this.GetRequest(this.db.doc(`data/parade-state`));
+  }
+
+  UpdateParadeStateHeading(appt,name) {
+    const doc = this.db.doc("data/PSH");
+    const obj = {};
+    obj[appt] = name;
+    return doc.set(obj, {merge: true});
   }
 
   // TEMPERATURE TRACKING
