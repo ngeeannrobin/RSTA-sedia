@@ -120,7 +120,7 @@ export class TemperatureTrackingComponent implements OnInit {
   GenerateReport(){
 
     let dt = new Date();
-    let text = `*RSTA Company Temperature Taking on ${this.ConvertDateToTitle(dt)} at ${this.ClosestReportingTime(dt)}*`;
+    let text = `*ISR Company Temperature Taking on ${this.ConvertDateToTitle(dt)} at ${this.ClosestReportingTime(dt).toString().padStart(4,"0")}*`;
     
     for (let i = 0; i < this.displayData.length; i++) {
       const doc = this.displayData[i];

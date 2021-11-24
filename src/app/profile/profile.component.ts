@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   copy: boolean = false;
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
+      this.userData.uid = this.auth.uid;
         this.GetProfile(this.auth.uid);
     })
   }
