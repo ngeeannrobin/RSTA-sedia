@@ -1,0 +1,22 @@
+<div (click)="Close()" class="background"></div>
+
+    
+
+<div class="container">
+    <div class="title">MEDICAL APPOINTMENT for {{admin.GetName(newMA.id)}}</div>
+    <div>
+        <label class="label">Reason</label>
+        <input [(ngModel)]="newMA.r" class="txtBox">
+    </div>
+    <div>
+        <label class="label">Location</label>
+        <input [(ngModel)]="newMA.l" class="txtBox">
+    </div>
+    <div>
+        <label class="label">Date & Time</label>
+        <input [(ngModel)]="newMA.dt" type="datetime-local" class="txtBox">
+    </div>
+    <div>
+        <button (click)="Done()">Done</button>
+    </div>
+</div>

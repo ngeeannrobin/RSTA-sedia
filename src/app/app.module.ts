@@ -43,6 +43,8 @@ import { AdminBiboComponent } from './admin-bibo/admin-bibo.component';
 import { SelectPltComponent } from './select-plt/select-plt.component';
 import { CodeComponent } from './code/code.component';
 import { ELanyardComponent } from './e-lanyard/e-lanyard.component';
+import { MedicalApptComponent } from './medical-appt/medical-appt.component';
+import { NewMaComponent } from './new-ma/new-ma.component';
 
 
 
@@ -70,7 +72,9 @@ import { ELanyardComponent } from './e-lanyard/e-lanyard.component';
     AdminBiboComponent,
     SelectPltComponent,
     CodeComponent,
-    ELanyardComponent
+    ELanyardComponent,
+    MedicalApptComponent,
+    NewMaComponent
   ],
   imports: [
     AngularFireAuthModule,

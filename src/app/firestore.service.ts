@@ -149,6 +149,20 @@ export class FirestoreService {
   DeleteTemp(id) {
     return this.db.doc(`temp-tracking/${id}`).delete();
   }
+
+  // MEDICAL APPOINTMENT
+  GetMAData() {
+    return this.GetRequestByRefWithId(this.db.collection(`med-appt`).ref);
+  }
+
+  AddMA(id,doc) {
+    console.log("test");
+    return this.db.doc(`med-appt/${id}`).set({ma: [doc]});
+  }
+
+  AppendMA(id,doc) {
+    return this.db.doc(`med-appt/${id}`).update({ma: firebase.firestore.FieldValue.arrayUnion(doc)});
+  }
   
   // BIBO
 

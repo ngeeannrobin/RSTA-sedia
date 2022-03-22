@@ -1,0 +1,55 @@
+.container {
+    padding: 1em;
+    padding-top: 2em;
+}
+
+.card{
+    color: black;
+    margin-top: 1em;
+    border-radius: 3px;
+    padding: 1em;
+}
+
+.info {
+    background-color: wheat;
+}
+
+.ma {
+    background-color: white;
+}
+
+.edit-text {
+    width: 100%;
+    height: 8.75em;
+    flex: 90%;
+    margin-right: 1em;
+    font-size: 1.25em;
+}
+
+.doc-btn-container {
+    flex: 10%
+}
+
+.doc-btn {
+    text-align: center;
+    padding: 0.25em;
+    border-radius: 50%;
+    margin-bottom: 0.25em;
+    max-width: 1.5em;
+}
+
+.action-container {
+    margin-top: 0.5em;
+}
+
+.action {
+    background-color: #ebbd68;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5em;
+    margin: 0.5em;
+    margin-left: 0;
+    margin-top: 0;
+    border-radius: 3px;
+}

@@ -1,0 +1,59 @@
+<nav-bar></nav-bar>
+<select-person *ngIf="selectNew" (select)="Selected($event)" (cancel)="selectNew=false"></select-person>
+<new-ma *ngIf="newMA !== null" [newMA]="newMA" (done)="NewMA()" (cancel)="newMA = null"></new-ma>
+
+<div class="container">
+    <div class="info card">
+        <div style="font-weight: bold;">Medical Appointments action buttons</div>
+        <div class="action-container">
+            <div (click)="selectNew=true;" class="action">Add new MA</div>
+            <!-- <div (click)="ToggleAll()" class="action">Show this week</div> -->
+            <div>
+                <div (click)="GenerateReport()" class="action">Generate report</div>
+                <input [(ngModel)]="code" class="action" style="width: 50%;" placeholder="Key">
+            </div>
+            <div *ngIf="generatedText != ''" (click)="Copy()" class="action">Copy report</div>
+            <a *ngIf="generatedText != ''" class="action" href="https://wa.me?text={{encodeURIComponent(generatedText)}}" target=”_blank”>Send on WhatsApp</a>
+        </div>
+
+        <!-- <div></div> -->
+    </div>
+
+    <div *ngFor="let doc of displayData" class="ma card">
+        <div>{{doc.name}}</div>
+        <div *ngFor="let ma of doc.ma">
+            <div>- {{ma.r}} at {{ma.l}} on {{ConvertTimestampToString(ma.dt)}}</div>
+        </div>
+    </div>
+
+    <!-- <div *ngFor="let doc of displayData" class="card" [ngClass]="{'temp': doc.t!==undefined, 'temp-missing': doc.t===undefined}">
+        <div style="font-weight: bold;">{{doc.name}}</div>
+        <div *ngIf="!doc.edit" (click)="Edit(doc)">
+            <div>{{doc.t||'-'}}</div>
+            <div>{{doc.r}}</div>
+            <div style="white-space: pre-wrap;">{{doc.s}}</div>
+        </div>
+        <div *ngIf="doc.edit" style="display: flex;">
+            <textarea class="edit-text" [(ngModel)]="doc.text"></textarea>
+            <div class="doc-btn-container">
+                <div (click)="Save(doc)" class="doc-btn" style="background-color: #81c784;">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div (click)="CancelEdit(doc)" class="doc-btn" style="background-color: #a6d4fa;">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+                <div (click)="doc.text=''" class="doc-btn" style="background-color: #a6d4fa;">
+                    <i class="fa fa-eraser" aria-hidden="true"></i>
+                </div>
+                <div (click)="Delete(doc)" class="doc-btn" style="background-color: #e57373">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+
+
+
+                
+            </div>
+
+        </div>
+    </div> -->
+</div>
