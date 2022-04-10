@@ -24,11 +24,13 @@ export class BiboV2Component implements OnInit {
         this.lastBibo = data;
         this.lastBibo.time = this.dt.ConvertTimestampToDate(this.lastBibo.time);
         console.log(this.lastBibo);
+      }).catch(rej=>{
+        this.lastBibo = {in: false, time: new Date()};
       })
     });
 
-    this.CheckPermissionLoop();
-    this.CheckLocation();
+    // this.CheckPermissionLoop();
+    // this.CheckLocation();
   }
 
   ngOnDestroy(): void {
@@ -37,16 +39,10 @@ export class BiboV2Component implements OnInit {
 
   Book() {
     if (this.auth.pid === undefined) {return;}
-    console.log("Getting true date");
     this.dt.GetLocalDate().then(date=>{
-      console.log("True date fetched. Posting record.");
       this.bibo.BookV2(!this.lastBibo.in,date,this.auth.pid).then(_=>{
-        console.log("Record uploaded. Updating locally.")
         this.lastBibo.time = date;
-        console.log(this.lastBibo.in);
         this.lastBibo.in = !this.lastBibo.in;
-        console.log(this.lastBibo.in);
-        console.log(this.lastBibo);
       })
     })
   }

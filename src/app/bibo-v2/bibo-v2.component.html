@@ -11,7 +11,7 @@
     Geolocation disabled. Please enable thx.
 </div> -->
 
-<div class="last-bibo-container">
+<div *ngIf="lastBibo.time !== null" class="last-bibo-container">
     Last Book {{lastBibo.in?'In':'Out'}}: {{dt.ConvertDateToDDMMYY_HHMM_DDD(lastBibo.time)}}
 </div>
 
