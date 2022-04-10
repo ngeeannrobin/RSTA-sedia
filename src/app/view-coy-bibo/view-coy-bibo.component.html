@@ -11,7 +11,13 @@
                 </span>
             </span>
             <span>
-                {{rec.pid}} Booked {{rec.in?"in":"out"}} at {{ConvertDateToHours(rec.time)}}
+                <span>
+                    {{rec.pid}} Booked {{rec.in?"in":"out"}} at {{ConvertDateToHours(rec.time)}} 
+                </span>
+                
+                <span *ngIf="!rec.in">
+                    for placeholder omegalul
+                </span>
                 <!-- <span class="time">{{ConvertDateToHours(rec.time)}}</span> -->
                 <!-- <span class="in-out">(Book {{rec.in?"in":"out"}})</span> -->
                 <!-- <br> -->
