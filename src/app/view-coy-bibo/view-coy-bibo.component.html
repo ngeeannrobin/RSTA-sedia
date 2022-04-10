@@ -11,11 +11,12 @@
                 </span>
             </span>
             <span>
-                <span class="time">{{ConvertDateToHours(rec.time)}}</span>
-                <span class="in-out">(Book {{rec.in?"in":"out"}})</span>
-                <br>
+                {{rec.pid}} Booked {{rec.in?"in":"out"}} at {{ConvertDateToHours(rec.time)}}
+                <!-- <span class="time">{{ConvertDateToHours(rec.time)}}</span> -->
+                <!-- <span class="in-out">(Book {{rec.in?"in":"out"}})</span> -->
+                <!-- <br> -->
                 <!-- <span class="rank">{{rec.rank}} </span> -->
-                <span class="name">{{rec.name}} </span>
+                <!-- <span class="name">{{rec.pid}} </span> -->
             </span>
         </div>
     </div>
