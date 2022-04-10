@@ -10,11 +10,9 @@ export class ProfileService {
 
   GetProfile(uuid) {
     let prom = new Promise<any>(res=>{
-      this.fs.GetUser(uuid).then(snapshot=>{
+      this.fs.GetPerson(uuid).then(snapshot=>{
         if (snapshot.empty) 
           res({});
-
-        
         let data;
         snapshot.forEach(ss => {
           data = ss.data();

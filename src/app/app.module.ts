@@ -45,6 +45,7 @@ import { CodeComponent } from './code/code.component';
 import { ELanyardComponent } from './e-lanyard/e-lanyard.component';
 import { MedicalApptComponent } from './medical-appt/medical-appt.component';
 import { NewMaComponent } from './new-ma/new-ma.component';
+import { BiboV2Component } from './bibo-v2/bibo-v2.component';
 
 
 
@@ -74,7 +75,8 @@ import { NewMaComponent } from './new-ma/new-ma.component';
     CodeComponent,
     ELanyardComponent,
     MedicalApptComponent,
-    NewMaComponent
+    NewMaComponent,
+    BiboV2Component
   ],
   imports: [
     AngularFireAuthModule,

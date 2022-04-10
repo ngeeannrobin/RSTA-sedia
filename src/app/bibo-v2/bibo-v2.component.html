@@ -1,0 +1,28 @@
+<nav-bar></nav-bar>
+
+<!-- <div *ngIf="showlocation==1 && false">
+    Currently
+    <div class="dist">
+        {{distanceStr}}
+    </div>
+    away from ISR office.
+</div>
+<div class="dist-container" *ngIf="showlocation==2">
+    Geolocation disabled. Please enable thx.
+</div> -->
+
+<div class="last-bibo-container">
+    Last Book {{lastBibo.in?'In':'Out'}}: {{dt.ConvertDateToDDMMYY_HHMM_DDD(lastBibo.time)}}
+</div>
+
+<div *ngIf="!lastBibo.in" (click)="Book()" class="bibo-btn">
+    Book in UwU
+</div>
+
+
+<div *ngIf="lastBibo.in">
+    Select reason blah blah blah
+    <div (click)="Book()" class="bibo-btn">
+        Book out :D
+    </div>
+</div>

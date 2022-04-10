@@ -63,6 +63,13 @@ export class FirestoreService {
     }
 
   GetUser(uuid) {
+    // const ref = this.db.collection(`person`).ref
+    // .where('uid','==',uuid);
+    // return ref.get();
+    return this.GetRequest(this.db.doc(`user/${uuid}`));
+  }
+
+  GetPerson(uuid) {
     const ref = this.db.collection(`person`).ref
     .where('uid','==',uuid);
     return ref.get();
@@ -173,6 +180,20 @@ export class FirestoreService {
   AddBiboRecord(bin: boolean, name: string, date: Date){
     const col = this.db.collection("rec");
     return col.add({in: bin, name: name, time: date});
+  }
+
+  AddBiboRecordV2(bin: boolean, date:Date, pid:String) {
+    const col = this.db.collection("rec");
+    console.log(pid);
+    return col.add({in:bin, time:date, pid:pid})
+  }
+
+  GetLatestBIBO(pid: String,count: number): Promise<any> {
+    const ref = this.db.collection(`rec`).ref
+      .where("pid","==",pid)
+      .orderBy("time","desc")
+      .limit(count);
+    return this.GetRequestByRef(ref);
   }
 
   UpdateParadeState(path,pid,data){

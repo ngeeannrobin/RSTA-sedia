@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public uid;
-  constructor(private auth: AngularFireAuth, private router: Router) { }
+  public pid;
+  constructor(private auth: AngularFireAuth, private router: Router, private fs:FirestoreService) { }
 
 
   Init(redirect=false): Promise<void> {
@@ -19,9 +21,13 @@ export class AuthService {
       Promise.all([loginPromise,uidPromise]).then(values=>{
         if (!values[0] && redirect){
           this.router.navigate(["/login"]);
+        } else {
+          this.uid = values[1];
+          this.fs.GetUser(this.uid).then(data=>{
+            this.pid = data.pid;
+            res();
+          });
         }
-        this.uid = values[1];
-        res();
       })
     });
   }

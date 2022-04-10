@@ -20,6 +20,18 @@ export class BiboService {
     })
   }
 
+  BookV2(bookIn,date,pid):Promise<any> {
+    return this.fs.AddBiboRecordV2(bookIn,date,pid);
+  }
+
+  GetLatestBIBO(pid):Promise<any> {
+    return new Promise<any>((res,rej)=>{
+      this.fs.GetLatestBIBO(pid,1).then(values=>{
+        res(values[0]);
+      })
+    });
+  }
+
   ViewBiboRecord(dt:Date):Promise<any>{
     // return this.fs.GetBiboRecord("20210612");
     // return this.fs.GetBiboRecord(dt.getFullYear().toString() +
