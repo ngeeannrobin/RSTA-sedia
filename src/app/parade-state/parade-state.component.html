@@ -42,8 +42,13 @@
         <div style="font-weight: bold;">{{plt.label}} [{{plt.strength.PS}}/{{plt.strength.TT}}]</div>
         <table style="font-size: 0.85em;">
             <div *ngFor="let pid of plt.ppl">
-                <span>{{nom[pid]}} {{plt.bibo[pid].e}}</span>
-                <span *ngIf="plt.bibo[pid].r !== undefined">({{plt.bibo[pid].r}})</span>
+                <span>{{nom[pid]}}</span>
+                <span *ngIf="plt.bookedOut[pid] === undefined"> ✅</span>
+                <span *ngIf="plt.bookedOut[pid] !== undefined">
+                    <span>{{plt.bookedOut[pid].e}}</span>
+                    <span *ngIf="plt.bookedOut[pid].rm"> ({{plt.bookedOut[pid].rm}})</span>
+                </span>
+                
             </div>
         </table>
     </div>

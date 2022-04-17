@@ -27,13 +27,18 @@ export class ParadeStateComponent implements OnInit {
   psCodeOrder = ["TT","PS","SO","OF","LV","MC","AT","CS","XX","GD","BO"];
 
   ngOnInit(): void {
-    // this.auth.Init(true).then(_=>{
-      this.admin.GetParadeState().subscribe(ps=>{
-        console.log(ps);
+    this.auth.Init(true).then(_=>{
+      // this.admin.GetParadeState().subscribe(ps=>{
+      //   console.log(ps);
+      //   this.paradeState = ps;
+      //   this.nom = this.admin.GetNom();
+      //   this.init = true;
+      this.admin.GetParadeStateV2().then(ps=>{
         this.paradeState = ps;
         this.nom = this.admin.GetNom();
         this.init = true;
       })
+    })
   }
 
   Cancel() {

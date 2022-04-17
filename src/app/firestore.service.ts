@@ -40,6 +40,8 @@ export class FirestoreService {
           array.unshift(doc.data());
         });
         res(array);
+      }).catch(err=>{
+        rej(err);
       })
     })
   }
@@ -163,7 +165,6 @@ export class FirestoreService {
   }
 
   AddMA(id,doc) {
-    console.log("test");
     return this.db.doc(`med-appt/${id}`).set({ma: [doc]});
   }
 
@@ -182,7 +183,7 @@ export class FirestoreService {
     return col.add({in: bin, name: name, time: date});
   }
 
-  AddBiboRecordV2(bin: boolean, date:Date, pid:String, reason:String, remark:String) {
+  AddBiboRecordV2(pid:String, date:Date, bin: boolean, reason:String, remark:String) {
     const col = this.db.collection("rec");
     return col.add({in:bin, time:date, pid:pid, r:reason, rm: remark})
   }
@@ -200,6 +201,17 @@ export class FirestoreService {
     let obj = {};
     obj[pid] = data||firebase.firestore.FieldValue.delete();
     return doc.update(obj);
+  }
+
+
+  UpdatePSBIBO(pid,bookIn,reason,remark){
+    return this.db.doc(`bibo/${pid}`).set({in: bookIn, r: reason, rm: remark});
+  }
+
+  GetBookedOutPersonnel() {
+    const ref = this.db.collection("bibo").ref
+      .where("in","==",false);
+    return this.GetRequestByRefWithId(ref);
   }
 
   UpdateLastBIBO(pid, bin, date, reason){

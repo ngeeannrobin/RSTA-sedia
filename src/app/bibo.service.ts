@@ -21,13 +21,17 @@ export class BiboService {
   }
 
   BookV2(bookIn,date,pid,reason,remark):Promise<any> {
-    return this.fs.AddBiboRecordV2(bookIn,date,pid,reason,remark);
+    const recordPromise = this.fs.AddBiboRecordV2(pid,date,bookIn,reason,remark);
+    const psPromise = this.fs.UpdatePSBIBO(pid,bookIn,reason,remark);
+    return Promise.all([recordPromise,psPromise]);
   }
 
   GetLatestBIBO(pid):Promise<any> {
     return new Promise<any>((res,rej)=>{
       this.fs.GetLatestBIBO(pid,1).then(values=>{
         res(values[0]);
+      }).catch(err=>{
+        rej(err);
       })
     });
   }
