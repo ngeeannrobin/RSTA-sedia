@@ -20,8 +20,8 @@ export class BiboService {
     })
   }
 
-  BookV2(bookIn,date,pid):Promise<any> {
-    return this.fs.AddBiboRecordV2(bookIn,date,pid);
+  BookV2(bookIn,date,pid,reason,remark):Promise<any> {
+    return this.fs.AddBiboRecordV2(bookIn,date,pid,reason,remark);
   }
 
   GetLatestBIBO(pid):Promise<any> {

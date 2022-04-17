@@ -1,3 +1,8 @@
+.last-bibo-container {
+    margin-top: 3em;
+    text-align: center;
+}
+
 .bibo-btn {
     background-color: #49CD9B;
     color: black;
@@ -6,4 +11,44 @@
     padding: 1em;
     margin: 1em;
     border-radius: 5px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.rsn-container {
+    margin-bottom: 2.5vh;
+    line-height: 1.5em;
+    padding: 1em;
+}
+
+
+.rsn-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.rsn-btn {
+    flex: 0 0 10vw;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    margin: 4px; margin-left:0; margin-top: 0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.selected {
+    background-color: #2f9d73;
+}
+
+.rsn-remark-container {
+    margin-top: 1em;
+}
+
+.rsn-remark-input {
+    width: 100%;
+    height: 2em;
 }

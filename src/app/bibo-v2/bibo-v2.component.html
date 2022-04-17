@@ -15,14 +15,26 @@
     Last Book {{lastBibo.in?'In':'Out'}}: {{dt.ConvertDateToDDMMYY_HHMM_DDD(lastBibo.time)}}
 </div>
 
-<div *ngIf="!lastBibo.in" (click)="Book()" class="bibo-btn">
+<div *ngIf="!lastBibo.in" (click)="BookIn()" class="bibo-btn">
     Book in UwU
 </div>
 
 
 <div *ngIf="lastBibo.in">
-    Select reason blah blah blah
-    <div (click)="Book()" class="bibo-btn">
+    <div class="rsn-container">
+        <a class="label">Select reason to book out</a>
+        <div class="rsn-btn-container">
+            <a *ngFor="let rsn of bookOutReasons" (click)="selectedReason = rsn" [ngClass]="{'selected':rsn==selectedReason}" class="rsn-btn">
+                <div>{{rsn.emoji}}</div>
+                <div>{{rsn.text}}</div>
+            </a>
+        </div>
+        <div class="rsn-remark-container">
+            <a class="label">Remarks</a>
+            <input [(ngModel)]="bookOutRemark" placeholder="{{selectedReason.remarkPlaceholder}}" [disabled]="selectedReason.remarkPlaceholder==null" class="rsn-remark-input">
+        </div>
+    </div>
+    <div (click)="BookOut()" class="bibo-btn">
         Book out :D
     </div>
 </div>

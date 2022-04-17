@@ -182,10 +182,9 @@ export class FirestoreService {
     return col.add({in: bin, name: name, time: date});
   }
 
-  AddBiboRecordV2(bin: boolean, date:Date, pid:String) {
+  AddBiboRecordV2(bin: boolean, date:Date, pid:String, reason:String, remark:String) {
     const col = this.db.collection("rec");
-    console.log(pid);
-    return col.add({in:bin, time:date, pid:pid})
+    return col.add({in:bin, time:date, pid:pid, r:reason, rm: remark})
   }
 
   GetLatestBIBO(pid: String,count: number): Promise<any> {

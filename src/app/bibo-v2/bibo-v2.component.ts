@@ -16,6 +16,19 @@ export class BiboV2Component implements OnInit {
   showlocation: number = 1;
   geolocationPerm = true;
   lastBibo = undefined;
+  bookOutReasons = [
+    {code: "MC", emoji: "Ⓜ️", text: " Medical Leave", remarkPlaceholder: "DDMMYY-DDMMYY"},
+    {code: "LV", emoji: "❌", text: " Leave", remarkPlaceholder: "DDMMYY(AM/PM)-DDMMYY(AM/PM)"},
+    {code: "SO", emoji: "🏯", text: " Stay out", remarkPlaceholder: null},
+    {code: "AT", emoji: "🅰️", text: " Attach Out", remarkPlaceholder: "Unit, DDMMYY-DDMMYY"},
+    {code: "CS", emoji: "©️", text: " Course", remarkPlaceholder: "Course, DDMMYY-DDMMYY"},        
+    {code: "OF", emoji: "🔘", text: " Off", remarkPlaceholder: "DDMMYY(AM/PM)-DDMMYY(AM/PM)"},
+    {code: "BO", emoji: "", text: "Company Book out", remarkPlaceholder: null},
+    {code: "XX", emoji: "⏺️", text: "Others", remarkPlaceholder: "Reason, DDMMYY-DDMMYY"},
+  ];
+  selectedReason:any = "";
+  bookOutRemark = "";
+
   constructor(private auth: AuthService, private bibo: BiboService, private gps: GpsService, public dt: DatetimeService) { }
 
   ngOnInit(): void {
@@ -37,14 +50,28 @@ export class BiboV2Component implements OnInit {
     this.checking = false;
   }
 
-  Book() {
+  Book(bin,rsn,rmk) {
     if (this.auth.pid === undefined) {return;}
     this.dt.GetLocalDate().then(date=>{
-      this.bibo.BookV2(!this.lastBibo.in,date,this.auth.pid).then(_=>{
+      this.bibo.BookV2(bin,date,this.auth.pid,rsn,rmk).then(_=>{
         this.lastBibo.time = date;
         this.lastBibo.in = !this.lastBibo.in;
       })
     })
+  }
+
+  BookIn() {
+    this.Book(true, null, null);
+  }
+
+  BookOut() {
+    if (this.selectedReason == "") {
+      alert("Pls select book out reason thx.")
+    } else if (this.selectedReason.remarkPlaceholder !== null && this.bookOutRemark === ""){
+      alert("Pls put remark la pls la pls")
+    } else {
+      this.Book(false,this.selectedReason.code,this.selectedReason.placeholder===null?null:this.bookOutRemark);
+    }
   }
 
   async CheckPermissionLoop(){
