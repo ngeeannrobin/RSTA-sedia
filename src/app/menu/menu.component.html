@@ -6,6 +6,9 @@
     <div *ngIf="name!=undefined" class="welcome">
         Welcome back, <br>{{name}}.
     </div>
+    <div *ngIf="name==undefined" class="welcome" style="color: red">
+        Data not initailsied, please go to Profile page and copy the uid at the bottom of the page.
+    </div>
 </div>
 
 <div class="btn-container">
@@ -15,4 +18,3 @@
     <div class="btn" (click)="redirect('/admin')" *ngIf="isAdmin">Admin menu</div>
 </div>
 
-<change-rank-name *ngIf="changeRankName" class="fs" (open)="HandleChange($event)" [data]="{}" [firstTime]="true"></change-rank-name>

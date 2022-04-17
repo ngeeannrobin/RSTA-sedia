@@ -23,14 +23,20 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
-      this.prof.GetProfile(this.auth.uid).then(data=>{
-        if (data == undefined){
-          this.changeRankName = true;
-        } else {
-          this.name = this.CapitalizeTheFirstLetterOfEachWord(data.name)
-        }
-      })
-      this.CheckAdmin(this.auth.uid);
+      // this.prof.GetPID(this.auth.uid).then(pid=>{
+      //   console.log(pid);
+      //   if (pid == undefined){
+      //     alert("Your data is not initialised, go to profile and copy that code at the bottom thx.");
+      //     this.name = "Unknown"
+      //   } else {
+      //     this.name = this.CapitalizeTheFirstLetterOfEachWord(this.admin.GetName(pid).substring(3))
+      //   }
+      // })
+      // this.CheckAdmin(this.auth.uid);
+      if (this.auth.pid !== undefined){
+        this.name = this.CapitalizeTheFirstLetterOfEachWord(this.admin.GetName(this.auth.pid));
+      }
+      
     })
   }
 
@@ -42,10 +48,6 @@ export class MenuComponent implements OnInit {
     this.admin.IsAdmin(uid).then(isAdmin=>{
       this.isAdmin = isAdmin
     })
-  }
-
-  HandleChange($event){
-    this.changeRankName = $event;
   }
 
   CapitalizeTheFirstLetterOfEachWord(words) {

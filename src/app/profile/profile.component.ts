@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from '../admin.service';
 import { AuthService } from '../auth.service';
 import { ProfileService } from '../profile.service';
 
@@ -10,25 +11,26 @@ import { ProfileService } from '../profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private auth:AuthService, private prof:ProfileService, private router:Router) { }
+  constructor(private auth:AuthService, private prof:ProfileService, private router:Router, private admin:AdminService) { }
   userData: any = {};
   changeRankName: boolean = false;
   copy: boolean = false;
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
       this.userData.uid = this.auth.uid;
-        this.GetProfile(this.auth.uid);
-    })
-  }
-
-
-  GetProfile(uid){
-    this.prof.GetProfile(uid).then(data=>{
-      this.userData = data;
-      this.userData.uid = uid;
       this.userData.url = this.auth.GetCurrentUser().photoURL || "../../assets/11.png";
+      this.userData.name = this.admin.GetName(this.auth.pid);
+        // this.GetProfile(this.auth.uid);
     })
   }
+
+
+  // GetProfile(uid){
+  //   this.prof.GetProfile(uid).then(data=>{
+  //     this.userData = data;
+  //     this.userData.url = this.auth.GetCurrentUser().photoURL || "../../assets/11.png";
+  //   })
+  // }
 
   signOut() {
     this.auth.SignOut().then(_=>{

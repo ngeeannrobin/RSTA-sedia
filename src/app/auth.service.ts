@@ -24,7 +24,7 @@ export class AuthService {
         } else {
           this.uid = values[1];
           this.fs.GetUser(this.uid).then(data=>{
-            this.pid = data.pid;
+            this.pid = data?.pid;
             res();
           });
         }

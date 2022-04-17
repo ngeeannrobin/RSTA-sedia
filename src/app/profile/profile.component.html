@@ -1,15 +1,13 @@
 <div class="profile">
     <img src="{{userData.url}}" class="profile-img" />
     <div class="user-info">
-        <div class="cat">{{userData.cat}}</div>
-        <div class="name">{{userData.name}}</div>
-        
+        <div class="name">{{userData.name?userData.name:"Data not initialised, copy the code at the bottom."}}</div>
     </div>
 
-    <div class="book-info">
+    <!-- <div class="book-info">
         <div *ngIf="userData.lastBookIn">Last book in: {{ConvertDate(userData.lastBookIn)}}</div>
         <div *ngIf="userData.lastBookOut">Last book out: {{ConvertDate(userData.lastBookOut)}}</div>
-    </div>
+    </div> -->
     <div class="btn-container">
         <!-- <div class="btn"><a (click)="changeRankName = true">Change name</a></div> -->
         <div class="btn logout"><a (click)="signOut()">Logout</a></div>
