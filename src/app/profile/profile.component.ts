@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.auth.Init(true).then(_=>{
       this.userData.uid = this.auth.uid;
-      this.userData.url = this.auth.GetCurrentUser().photoURL || "../../assets/11.png";
+      this.userData.url = this.auth.GetCurrentUser().photoURL || "../../assets/ISR.png";
       this.userData.name = this.admin.GetName(this.auth.pid);
         // this.GetProfile(this.auth.uid);
     })
