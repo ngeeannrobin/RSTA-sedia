@@ -32,11 +32,11 @@ export class MenuComponent implements OnInit {
       //     this.name = this.CapitalizeTheFirstLetterOfEachWord(this.admin.GetName(pid).substring(3))
       //   }
       // })
-      // this.CheckAdmin(this.auth.uid);
+      
       if (this.auth.pid !== undefined){
         this.name = this.CapitalizeTheFirstLetterOfEachWord(this.admin.GetName(this.auth.pid));
       }
-      
+      this.CheckAdmin(this.auth.uid);
     })
   }
 
