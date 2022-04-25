@@ -55,7 +55,7 @@ export class ParadeStateComponent implements OnInit {
     let dt = new Date();
     let text = `*ISR*\n`;
     text += `DATE: ${dt.getDate()} ${["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"][dt.getMonth()]} ${dt.getFullYear()}\n`;
-    text += `\nCDO:\nCDS\nDUTY PS:\n\n--------------------------------\n\n`;
+    text += `\nCDO:\nCDS\n\n--------------------------------\n\n`;
 
     // STRENGTH
     this.psCodeOrder.forEach(code=>{
@@ -67,7 +67,7 @@ export class ParadeStateComponent implements OnInit {
     this.paradeState.plt.forEach(plt => {
       text += `*${plt.label} [${plt.strength.PS}/${plt.strength.TT}]*\n`;
       plt.ppl.forEach(pid=>{
-        text += `${this.admin.ConvertName(this.nom[pid])} ${plt.bibo[pid].e}${plt.bibo[pid].r===undefined?"":`(${plt.bibo[pid].r})`}\n`;
+        text += `${this.admin.ConvertName(this.nom[pid])} ${plt.bookedOut[pid]?.e||'✅'}${[undefined,null,""].includes(plt.bookedOut[pid]?.rm)?"":`(${plt.bookedOut[pid]?.rm})`}\n`;
       })
       text += "\n";
     });
@@ -78,9 +78,10 @@ export class ParadeStateComponent implements OnInit {
     // DECODE
     text = this.admin.Decode(text,this.code);
     
+    // HIDE CODE
+    this.code = "";
+
     // SEND
     window.location.assign(`https://wa.me?text=${encodeURIComponent(text)}`);
-    
-    console.log(text);
   }
 }
