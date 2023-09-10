@@ -1,5 +1,17 @@
 # RSTASedia
 
+This project was developed during my National Service as a Book In/Book Out system with additial capabilities.\
+The project started as a system to verify when a soldier booked in by scanning a variable QR code but due to changes in client requirements, it became a web application with a single button to book in/book out without additional verifications. \
+\
+Additional capabilites include
+- Generate parade state using latest book in/book out data
+- View book in/book out history sorted by date
+- Download book in/book out history as excel file
+- Track upcoming medical appointments
+- Temperature tracking of personnel on medical leave (obsolete after COVID-19 measures were lifted)
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.15.
 
 ## Development server
